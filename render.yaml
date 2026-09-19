@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: prepnurse
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEFAULT_ADMIN_EMAIL
+        value: admin@norcet.in
+      - key: DEFAULT_ADMIN_PASSWORD
+        value: Admin@123

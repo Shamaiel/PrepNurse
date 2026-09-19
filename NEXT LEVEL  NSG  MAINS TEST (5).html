@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>NLN Mock Test — NORCET 11 Mains Free Series</title>
+<style>
+:root{
+  --bg:#F5F7F9; --surface:#FFFFFF; --surface-2:#EEF3F5; --text:#12232F; --text-muted:#5B6B76;
+  --border:#DCE4E9; --primary:#0E4C6B; --primary-2:#0A3A54; --primary-soft:#E4F0F5;
+  --gold:#B8862E; --gold-soft:#FBF3DF; --success:#1F8A5F; --success-bg:#E6F5EE;
+  --danger:#C4433D; --danger-bg:#FBEAEA; --marked:#8A4FBE; --marked-bg:#F1E7FA;
+  --radius:14px; --shadow:0 2px 14px rgba(18,35,47,.10);
+  --font-head: Georgia,'Iowan Old Style','Palatino Linotype',serif;
+  --font-body: -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1A24; --surface:#122531; --surface-2:#0F202A; --text:#E7EEF2; --text-muted:#93A6B1;
+    --border:#22404F; --primary:#3E9FC6; --primary-2:#2B7FA3; --primary-soft:#123040;
+    --gold:#D9B54B; --gold-soft:#332B12; --success:#3FBE86; --success-bg:#123326;
+    --danger:#E2635C; --danger-bg:#3A1616; --marked:#B48CE0; --marked-bg:#2C2140;
+    --shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1A24; --surface:#122531; --surface-2:#0F202A; --text:#E7EEF2; --text-muted:#93A6B1;
+  --border:#22404F; --primary:#3E9FC6; --primary-2:#2B7FA3; --primary-soft:#123040;
+  --gold:#D9B54B; --gold-soft:#332B12; --success:#3FBE86; --success-bg:#123326;
+  --danger:#E2635C; --danger-bg:#3A1616; --marked:#B48CE0; --marked-bg:#2C2140;
+  --shadow:0 2px 14px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--font-body);
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;}
+a{color:var(--primary);}
+.hidden{display:none !important;}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px;}
+
+/* ---- Top banner ---- */
+.topbanner{
+  background:linear-gradient(135deg,var(--primary-2),var(--primary));
+  color:#fff; padding:9px 14px; font-size:13px; display:flex; align-items:center;
+  justify-content:center; gap:10px; text-align:center; flex-wrap:wrap;
+}
+.topbanner a{
+  color:#fff; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.5);
+  padding:5px 12px; border-radius:999px; text-decoration:none; font-weight:600; white-space:nowrap;
+}
+.topbanner a:hover{background:rgba(255,255,255,.28);}
+
+/* ---- Header ---- */
+header.app-head{
+  background:var(--surface); border-bottom:2px solid var(--gold); position:sticky; top:0; z-index:30;
+}
+.head-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;max-width:760px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:10px;}
+.emblem{
+  width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--gold),#8a6a1e);
+  display:flex;align-items:center;justify-content:center;color:#1a1200;font-weight:700;font-family:var(--font-head);
+  font-size:15px;flex-shrink:0;box-shadow:0 0 0 3px var(--primary) inset;
+}
+.brand-text .name{font-family:var(--font-head);font-weight:700;font-size:17px;line-height:1.1;color:var(--primary);}
+.brand-text .tag{font-size:10.5px;color:var(--text-muted);letter-spacing:.02em;}
+.theme-btn{
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:10px;
+  width:38px;height:38px;font-size:17px;cursor:pointer;flex-shrink:0;
+}
+
+main{padding-bottom:40px;}
+
+/* ---- Home ---- */
+.hero{text-align:center;padding:26px 14px 8px;}
+.hero h1{font-family:var(--font-head);font-size:26px;margin:0 0 6px;color:var(--primary);}
+.hero p{margin:0;color:var(--text-muted);font-size:14.5px;}
+.badgeline{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.badge{
+  background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold);border-radius:999px;
+  padding:5px 12px;font-size:12.5px;font-weight:700;
+}
+.statrow{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 14px 6px;
+}
+.stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 16px;text-align:center;min-width:96px;
+  box-shadow:var(--shadow);
+}
+.stat b{display:block;font-size:18px;color:var(--primary);font-family:var(--font-head);}
+.stat span{font-size:11px;color:var(--text-muted);}
+
+.modecards{display:flex;flex-direction:column;gap:14px;padding:18px 14px 6px;}
+@media(min-width:600px){.modecards{flex-direction:row;}}
+.modecard{
+  flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;
+}
+.modecard h3{margin:0;font-family:var(--font-head);font-size:19px;}
+.modecard p{margin:0;color:var(--text-muted);font-size:13.5px;line-height:1.5;flex:1;}
+.modecard ul{margin:0;padding-left:18px;color:var(--text-muted);font-size:13px;}
+.btn{
+  border:none;border-radius:10px;padding:12px 16px;font-weight:700;font-size:14.5px;cursor:pointer;
+  text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:var(--primary-2);}
+.btn-gold{background:var(--gold);color:#1a1200;}
+.btn-outline{background:transparent;border:1.5px solid var(--primary);color:var(--primary);}
+.btn-ghost{background:var(--surface-2);color:var(--text);}
+.btn-danger{background:var(--danger);color:#fff;}
+.btn-block{width:100%;}
+.resume-row{display:flex;gap:8px;margin-top:4px;}
+.resume-row .btn{flex:1;font-size:13px;padding:9px 10px;}
+
+.historybox{margin:20px 14px 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);}
+.historybox h4{margin:0 0 8px;font-size:14px;font-family:var(--font-head);}
+.histrow{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-top:1px dashed var(--border);}
+.histrow:first-of-type{border-top:none;}
+.histrow .sc{font-weight:700;color:var(--primary);}
+
+.footnote{text-align:center;color:var(--text-muted);font-size:12px;padding:22px 14px 10px;}
+
+/* ---- Quiz ---- */
+.quizbar{
+  background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:25;
+}
+.quizbar-in{max-width:760px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.qb-left{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);}
+.qb-left b{color:var(--text);}
+.timer{
+  font-variant-numeric:tabular-nums; font-weight:700; font-size:15px; background:var(--primary-soft);
+  color:var(--primary); padding:6px 10px; border-radius:8px;
+}
+.timer.low{background:var(--danger-bg);color:var(--danger);}
+.progressbar{height:4px;background:var(--surface-2);}
+.progressbar-in{height:100%;background:var(--gold);transition:width .2s;}
+
+.qcard{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  margin:16px 14px;padding:18px;box-shadow:var(--shadow);
+}
+.qcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.qnum{font-size:12px;color:var(--text-muted);font-weight:700;}
+.flagbtn{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;
+  font-size:12px;cursor:pointer;color:var(--text-muted);display:flex;align-items:center;gap:5px;
+}
+.flagbtn.on{background:var(--marked-bg);color:var(--marked);border-color:var(--marked);}
+.qtext{white-space:pre-line;font-size:16px;line-height:1.55;margin-bottom:16px;}
+.options{display:flex;flex-direction:column;gap:10px;}
+.opt{
+  display:flex;align-items:flex-start;gap:10px;text-align:left;background:var(--surface-2);
+  border:1.5px solid var(--border);border-radius:11px;padding:12px 13px;cursor:pointer;font-size:14.5px;line-height:1.45;
+}
+.opt .lbl{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;
+}
+.opt:hover{border-color:var(--primary);}
+.opt.selected{border-color:var(--primary);background:var(--primary-soft);}
+.opt.selected .lbl{background:var(--primary);color:#fff;border-color:var(--primary);}
+.opt.correct{border-color:var(--success);background:var(--success-bg);}
+.opt.correct .lbl{background:var(--success);color:#fff;border-color:var(--success);}
+.opt.incorrect{border-color:var(--danger);background:var(--danger-bg);}
+.opt.incorrect .lbl{background:var(--danger);color:#fff;border-color:var(--danger);}
+.opt[disabled],.opt.locked{cursor:default;}
+.opt .mark{margin-left:auto;font-weight:700;flex-shrink:0;}
+
+.rationale{
+  margin-top:14px;border-radius:11px;padding:13px 14px;font-size:13.5px;line-height:1.55;
+  border:1px solid var(--border);
+}
+.rationale.correctbox{background:var(--success-bg);border-color:var(--success);}
+.rationale.wrongbox{background:var(--danger-bg);border-color:var(--danger);}
+.rationale .verdict{font-weight:700;margin-bottom:5px;display:block;}
+.rationale.correctbox .verdict{color:var(--success);}
+.rationale.wrongbox .verdict{color:var(--danger);}
+.rationale .ans{font-weight:700;margin-bottom:6px;display:block;}
+
+.quiznav{
+  position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--border);
+  display:flex;gap:8px;padding:10px 14px;max-width:760px;margin:0 auto;z-index:24;
+}
+.quiznav .btn{flex:1;font-size:13px;padding:11px 6px;}
+
+/* ---- Palette corner + overlay ---- */
+.palette-fab{
+  position:fixed;left:14px;bottom:74px;z-index:40;background:var(--primary);color:#fff;border:none;
+  border-radius:14px;width:52px;height:52px;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:700;
+}
+.palette-fab .n{font-size:15px;line-height:1;}
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center;
+}
+.overlay.hidden{display:none;}
+.sheet{
+  background:var(--surface);width:100%;max-width:760px;max-height:80vh;border-radius:16px 16px 0 0;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);}
+.sheet-head h4{margin:0;font-family:var(--font-head);font-size:16px;}
+.sheet-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted);}
+.legend{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;font-size:11px;color:var(--text-muted);}
+.legend span{display:flex;align-items:center;gap:4px;}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+.palette-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:7px;padding:6px 16px 16px;overflow-y:auto;
+}
+.pnum{
+  aspect-ratio:1;border-radius:8px;border:1.5px solid var(--border);background:var(--surface-2);
+  display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--text);
+}
+.pnum.notvisited{opacity:.65;}
+.pnum.answered{background:var(--success);border-color:var(--success);color:#fff;}
+.pnum.notanswered{background:var(--danger-bg);border-color:var(--danger);color:var(--danger);}
+.pnum.marked{background:var(--marked);border-color:var(--marked);color:#fff;}
+.pnum.markedans{background:var(--marked);border-color:var(--success);color:#fff;box-shadow:inset 0 0 0 2px var(--success);}
+.pnum.current{outline:2px solid var(--gold);outline-offset:1px;}
+.pnum.pcorrect{background:var(--success);border-color:var(--success);color:#fff;}
+.pnum.pwrong{background:var(--danger);border-color:var(--danger);color:#fff;}
+.wa-line{padding:10px 16px 14px;border-top:1px solid var(--border);text-align:center;font-size:12.5px;}
+
+/* ---- Modal ---- */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-bg.hidden{display:none;}
+.modal{background:var(--surface);border-radius:14px;padding:20px;max-width:400px;width:100%;box-shadow:var(--shadow);}
+.modal h3{margin:0 0 10px;font-family:var(--font-head);}
+.modal p{font-size:14px;color:var(--text-muted);margin:0 0 6px;}
+.modal .sumgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;}
+.modal .sumgrid div{background:var(--surface-2);border-radius:8px;padding:8px;text-align:center;font-size:12.5px;}
+.modal .sumgrid b{display:block;font-size:16px;color:var(--primary);}
+.modal-actions{display:flex;gap:8px;margin-top:10px;}
+.modal-actions .btn{flex:1;}
+
+/* ---- Results ---- */
+.resultwrap{padding:18px 14px 40px;max-width:760px;margin:0 auto;}
+.scorering{
+  width:170px;height:170px;border-radius:50%;margin:10px auto 8px;display:flex;align-items:center;justify-content:center;
+  background:conic-gradient(var(--primary) calc(var(--pct)*1%), var(--surface-2) 0);
+}
+.scorering-in{
+  width:132px;height:132px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+}
+.scorering-in b{font-size:24px;font-family:var(--font-head);color:var(--primary);}
+.scorering-in span{font-size:11.5px;color:var(--text-muted);}
+.scoreline{text-align:center;font-size:15px;font-weight:700;margin-bottom:4px;}
+.scoresub{text-align:center;color:var(--text-muted);font-size:12.5px;margin-bottom:16px;}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px;}
+.statgrid .g{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 4px;text-align:center;}
+.statgrid .g b{display:block;font-size:16px;}
+.statgrid .g span{font-size:10.5px;color:var(--text-muted);}
+.g.correct b{color:var(--success);}
+.g.wrong b{color:var(--danger);}
+.g.skip b{color:var(--text-muted);}
+.g.time b{color:var(--primary);}
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:10px;}
+.chip{
+  flex-shrink:0;border:1.5px solid var(--border);background:var(--surface);border-radius:999px;padding:6px 13px;
+  font-size:12.5px;cursor:pointer;color:var(--text-muted);font-weight:600;
+}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+.revcard{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:11px;margin-bottom:10px;overflow:hidden;}
+.revcard.correct{border-left-color:var(--success);}
+.revcard.wrong{border-left-color:var(--danger);}
+.revcard.skip{border-left-color:var(--text-muted);}
+.revhead{padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.revhead .qn{font-size:12px;color:var(--text-muted);font-weight:700;margin-bottom:3px;}
+.revhead .qt{font-size:14px;white-space:pre-line;line-height:1.45;}
+.revicon{flex-shrink:0;font-size:15px;}
+.revbody{padding:0 14px 14px;font-size:13px;display:none;}
+.revbody.open{display:block;}
+.revans{margin:4px 0;padding:8px 10px;border-radius:8px;font-size:13px;}
+.revans.your.correct{background:var(--success-bg);color:var(--success);}
+.revans.your.wrong{background:var(--danger-bg);color:var(--danger);}
+.revans.correctline{background:var(--success-bg);color:var(--success);}
+.resultactions{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+
+@media(max-width:420px){
+  .hero h1{font-size:22px;}
+  .scorering{width:150px;height:150px;}
+  .scorering-in{width:114px;height:114px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbanner">
+  📲 <span>Join <b>NLN – Next Level Nursing</b> for more free tests</span>
+  <a href="https://chat.whatsapp.com/GCymmczgn6W1FBPhxc3cux?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener">👉 Click Here</a>
+</div>
+
+<header class="app-head">
+  <div class="head-row">
+    <div class="brand">
+      <div class="emblem">NLN</div>
+      <div class="brand-text">
+        <div class="name">Next Level Nursing</div>
+        <div class="tag">Free Test Series by Experts · All India Single Digit Ranks</div>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<div class="modal-bg hidden" id="modalBg">
+  <div class="modal" id="modalBody"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ======================= DATA ======================= */
+const QUESTIONS = [];
+function add(q,o,c,r){ QUESTIONS.push({q:q,o:o,c:c,r:r}); }
+
+/* ---- Q1-40 ---- */
+add(`Which of the following is NOT a major criterion according to the Jones Criteria for diagnosing Acute Rheumatic Fever?`,
+[`Migratory polyarthritis`,`Erythema marginatum`,`Sydenham chorea`,`Polyarthralgia`],3,
+`The major Jones Criteria include Carditis, Polyarthritis, Chorea, Erythema marginatum, and Subcutaneous nodules (mnemonic: J♥NES). Polyarthralgia (joint pain without objective swelling) is strictly a minor criterion, whereas Polyarthritis is a major criterion.`);
+
+add(`A nursing instructor is designing a test to evaluate a student's ability to combine multiple clinical facts to form a new care plan. According to Bloom's Taxonomy, which cognitive level is being tested?`,
+[`Applying`,`Analyzing`,`Evaluating`,`Creating (Synthesis)`],3,
+`Creating or Synthesis is the highest level of the cognitive domain in Bloom's Taxonomy, involving combining parts to form a new, original whole (e.g., formulating a unique care plan).`);
+
+add(`Under current pediatric airway guidelines, what is the primary rationale for preferentially utilizing a cuffed endotracheal tube (ETT) over an un-cuffed ETT in an infant?`,
+[`It utilizes the naturally narrow cricoid cartilage to form a seal.`,`It requires a larger internal diameter tube, decreasing airway resistance.`,`It allows for reliable delivery of Positive End-Expiratory Pressure (PEEP) and decreases the need for tube exchanges.`,`It prevents vocal cord paralysis during prolonged intubation.`],2,
+`Historically, un-cuffed tubes were used because the pediatric cricoid acts as a natural seal. Modern guidelines prefer cuffed tubes for all ages to prevent air leaks, ensure accurate tidal volume/PEEP delivery, and reduce the trauma of repeated tube exchanges.`);
+
+add(`A psychiatric nurse removes a patient's privileges to watch television because the patient threw a chair at another resident. This behavioral modification technique is strictly defined as:`,
+[`Positive Reinforcement`,`Negative Reinforcement`,`Positive Punishment`,`Negative Punishment`],3,
+`"Negative" means taking something away, and "Punishment" means aiming to decrease a behavior. Removing a pleasant stimulus (TV) to decrease an unwanted behavior (throwing chairs) is Negative Punishment.`);
+
+add(`In a randomized controlled trial comparing two antihypertensives, the p-value for the difference in blood pressure reduction is 0.03. How must the nurse interpret this finding?`,
+[`The probability of making a Type II error is 3%.`,`There is a 3% probability that the observed difference occurred by chance if the null hypothesis is true.`,`The alternative hypothesis is 97% proven to be true.`,`The clinical significance of the drug is high.`],1,
+`A p-value of <0.05 indicates statistical significance, meaning that if there were truly no difference between the drugs (null hypothesis), there is only a 3% probability of seeing this data by pure chance.`);
+
+add(`What is the standard, correct chronological sequence of steps in Rapid Sequence Intubation (RSI)?`,
+[`Preparation, Preoxygenation, Pretreatment, Paralysis with Induction, Positioning/Protection, Placement with proof, Post-intubation management`,`Preparation, Pretreatment, Preoxygenation, Paralysis with Induction, Positioning/Protection, Placement with proof, Post-intubation management`,`Preoxygenation, Preparation, Pretreatment, Paralysis with Induction, Positioning/Protection, Placement with proof, Post-intubation management`,`Preparation, Preoxygenation, Paralysis with Induction, Pretreatment, Positioning/Protection, Placement with proof, Post-intubation management`],0,
+`The 7 Ps of RSI must occur in this exact timeline: Preparation (equipment check), Preoxygenation (100% O2), Pretreatment (adjuncts), Paralysis with Induction (sedative pushed immediately followed by paralytic), Protection/Positioning, Placement (intubation), and Post-intubation management.`);
+
+add(`A pregnant patient's routine urine dipstick analysis reveals a protein reading of "+3". How should the nurse quantitatively interpret this massive proteinuria finding?`,
+[`30 mg/dL`,`100 mg/dL`,`300 mg/dL`,`1000 mg/dL`],2,
+`On a standard urine dipstick, Trace = 10-20 mg/dL, +1 = 30 mg/dL, +2 = 100 mg/dL, +3 = 300 mg/dL, and +4 = 1000 mg/dL. A +3 indicates severe proteinuria typical of severe preeclampsia or nephrotic syndrome.`);
+
+add(`A patient has an estimated Glomerular Filtration Rate (eGFR) of 38 mL/min/1.73m2. According to KDIGO guidelines, which stage of Chronic Kidney Disease (CKD) does this represent?`,
+[`G2`,`G3a`,`G3b`,`G4`],2,
+`CKD Staging: G1 (>90), G2 (60-89), G3a (45-59), G3b (30-44), G4 (15-29), G5 (<15). An eGFR of 38 falls precisely into Stage G3b (Moderate to severe decrease).`);
+
+add(`A patient loses their right leg in an MVA (Impairment), is unable to walk independently (Disability), and consequently loses their job as a construction worker. According to the WHO ICIDH framework, losing the job represents which concept?`,
+[`Disease`,`Impairment`,`Disability`,`Handicap`],3,
+`In the WHO framework, Impairment is the anatomical loss (loss of leg), Disability is the functional restriction (inability to walk), and Handicap is the resulting social/occupational disadvantage (loss of job).`);
+
+add(`Based on Light's Criteria, which finding definitively classifies pleural fluid as an Exudate?`,
+[`Pleural fluid protein / Serum protein ratio < 0.5`,`Pleural fluid LDH / Serum LDH ratio > 0.6`,`Pleural fluid LDH < 2/3 the upper limit of normal serum LDH`,`Clear, straw-colored appearance`],1,
+`Light's criteria classify fluid as an exudate if ONE of the following is true: Pleural/Serum protein > 0.5; Pleural/Serum LDH > 0.6; or Pleural LDH > 2/3 the upper limit of normal serum LDH.`);
+
+add(`An epidemiological survey of a village calculates a Chandler's Index of 350. How should the public health nurse interpret this finding?`,
+[`Mild hookworm endemicity with low public health significance`,`Successful eradication of the hookworm parasite`,`Severe hookworm endemicity representing a major public health problem`,`High incidence of lymphatic filariasis requiring immediate intervention`],2,
+`Chandler's Index calculates the average number of hookworm eggs per gram of feces in a community. An index < 200 is of minor significance. A value > 300 indicates a massive hookworm burden requiring immediate mass drug administration.`);
+
+add(`What is the correct physiological pathway for the flow of Cerebrospinal Fluid (CSF)?`,
+[`Lateral ventricles -> Foramen of Magendie -> 3rd ventricle -> Aqueduct of Sylvius -> 4th ventricle -> Foramen of Monro`,`Lateral ventricles -> Foramen of Monro -> 3rd ventricle -> Aqueduct of Sylvius -> 4th ventricle -> Foramina of Luschka & Magendie`,`3rd ventricle -> Foramina of Luschka -> 4th ventricle -> Aqueduct of Sylvius -> Lateral ventricles`,`4th ventricle -> Foramen of Monro -> 3rd ventricle -> Lateral ventricles`],1,
+`CSF is produced in the choroid plexus of the lateral ventricles, flows through the intraventricular foramina (Monro) to the 3rd, through the cerebral aqueduct (Sylvius) to the 4th, and exits to the subarachnoid space via Luschka (lateral) and Magendie (median).`);
+
+add(`Which is the most common anatomical variant of Tracheoesophageal Fistula (TEF)?`,
+[`Proximal esophageal atresia with a distal fistula to the trachea.`,`Proximal and distal esophageal segments both connected to the trachea.`,`Esophageal atresia without any fistula to the airway.`,`Intact esophagus with an H-type fistula to the trachea.`],0,
+`The most common variant (accounting for ~85% of cases) features a blind proximal esophageal pouch and a distal esophageal segment that connects directly into the trachea.`);
+
+add(`During abdominal palpation using Crichton's method (the rule of fifths), the nurse notes that 3/5 of the fetal head is palpable above the pelvic brim. What does this indicate?`,
+[`The fetal head is unengaged.`,`The fetal head is fully engaged.`,`The fetal head is at +2 station.`,`The fetal head is crowning.`],0,
+`Crichton's method assesses fetal head descent. If 5/5 or 4/5 is palpable, it is floating. If 3/5 is palpable, the widest diameter (BPD) has NOT yet passed the inlet, meaning it is still unengaged. Engagement is definitively reached only when 2/5 or less of the fetal head is palpable.`);
+
+add(`In a clinical trial for a new contraceptive pill, 200 women used the method perfectly for 2 years. During this time, a total of 8 unintended pregnancies occurred. What is the calculated Pearl Index?`,
+[`0.4`,`2.0`,`4.0`,`8.0`],1,
+`The Pearl Index measures contraceptive failure per 100 woman-years of exposure. Formula: (Number of unintended pregnancies × 100) / (Total woman-years of exposure). Here: 8 pregnancies × 100 = 800. Total woman-years = 200 women × 2 years = 400. 800 / 400 = a Pearl Index of 2.0.`);
+
+add(`Match the age group with the most common causative organism for bacterial meningitis:
+
+1. Neonates (0-1 month)
+2. Children (1 month - 2 years)
+3. Young Adults
+
+a. Streptococcus pneumoniae
+b. Neisseria meningitidis
+c. Group B Streptococcus`,
+[`1-c, 2-a, 3-b`,`1-b, 2-c, 3-a`,`1-a, 2-b, 3-c`,`1-c, 2-b, 3-a`],0,
+`Neonates are most susceptible to Group B Strep (and E. coli). Children are mostly affected by Strep pneumoniae. Young adults (especially in crowded living) are most susceptible to Neisseria meningitidis.`);
+
+add(`In inventory control, drugs that are life-saving and whose absence cannot be tolerated for even a day are classified under which category?`,
+[`'A' items in ABC analysis`,`'V' items in VED analysis`,`'F' items in FSN analysis`,`'E' items in VED analysis`],1,
+`VED stands for Vital, Essential, Desirable. 'Vital' items are critical, life-saving drugs whose stock-out can be fatal. ABC analysis focuses strictly on budget/cost, not clinical criticality.`);
+
+add(`A hospital pharmacy issues older stock of normal saline before the newer stock. Which inventory management principle is being utilized?`,
+[`LIFO`,`FSN`,`FIFO`,`VED`],2,
+`FIFO stands for First-In, First-Out. It ensures that items with earlier expiry dates (older stock) are used before newer stock to prevent wastage.`);
+
+add(`In a SWOT analysis of a nursing department, the opening of a new specialized cardiac center in a competing hospital represents a(n):`,
+[`Strength`,`Weakness`,`Opportunity`,`Threat`],3,
+`SWOT stands for Strengths, Weaknesses, Opportunities, and Threats. External factors that could negatively impact the organization (like a competitor opening) are classified as Threats.`);
+
+add(`In which method of nursing care delivery does one registered nurse assume 24-hour accountability for planning, directing, and evaluating the care of a patient from admission to discharge?`,
+[`Functional nursing`,`Team nursing`,`Primary nursing`,`Modular nursing`],2,
+`Primary nursing assigns 24-hour responsibility for care planning and evaluation to one primary RN, though associate nurses may provide care when the primary RN is off duty.`);
+
+add(`Under the National Leprosy Eradication Program (NLEP), the Multi-Drug Therapy (MDT) for Multibacillary leprosy consists of which combination of drugs?`,
+[`Rifampicin and Dapsone for 6 months`,`Rifampicin, Dapsone, and Clofazimine for 12 months`,`Isoniazid, Rifampicin, and Ethambutol for 6 months`,`Dapsone and Clofazimine for 24 months`],1,
+`Multibacillary (MB) leprosy requires a 3-drug regimen (Rifampicin, Dapsone, Clofazimine) given for 12 months. Paucibacillary (PB) requires a 2-drug regimen (Rifampicin, Dapsone) for 6 months.`);
+
+add(`A 35-year-old woman who smokes 20 cigarettes a day requests combined oral contraceptive pills (OCPs). According to WHO Medical Eligibility Criteria (MEC), how is she classified?`,
+[`Category 1`,`Category 2`,`Category 3`,`Category 4`],3,
+`According to WHO MEC, smoking ≥15 cigarettes/day in a woman aged ≥35 years is a Category 4 absolute contraindication for combined OCPs due to the massively increased risk of fatal venous thromboembolism and stroke.`);
+
+add(`A patient has undergone a bilateral vasectomy. What timeline must the nurse educate the patient about regarding contraceptive backup?`,
+[`He is sterile immediately post-procedure.`,`He must use backup contraception for 48 hours.`,`He must use backup contraception for 3 months or approximately 20 ejaculations.`,`He must use backup contraception for 1 year.`],2,
+`Vasectomy is not immediately effective. Sperm remain stored in the vas deferens above the ligation site. Complete azoospermia typically takes 3 months or roughly 20 ejaculations to clear.`);
+
+add(`The WHO's global strategy to accelerate the elimination of cervical cancer proposes the "90-70-90" targets for 2030. What does the "70" strictly represent?`,
+[`70% of girls fully vaccinated with HPV vaccine by age 15`,`70% of women screened with a high-performance test by age 35 and again by 45`,`70% of women identified with cervical disease receive treatment`,`70% reduction in cervical cancer mortality`],1,
+`90 = Vaccination of girls by 15. 70 = Screening with a high-performance test (e.g., HPV DNA) by 35 and 45. 90 = Treatment of pre-cancer/cancer.`);
+
+add(`All of the following are direct target beneficiaries under the Saksham Anganwadi and Poshan 2.0 scheme EXCEPT:`,
+[`A 3-year-old female child`,`A 37-year-old expecting female`,`A 10-year-old school-going girl`,`A 16-year-old adolescent girl`],2,
+`Poshan 2.0 specifically targets pregnant women, lactating mothers, children aged 0-6 years, and adolescent girls aged 14-18 years in aspirational districts to eradicate malnutrition. Girls between 6 and 14 years old are not direct beneficiaries of this specific scheme; they are covered under school Midday Meal schemes.`);
+
+add(`An ECG reveals ST-segment elevation strictly in leads V1, V2, V3, and V4. Based on these leads, which type of Myocardial Infarction is occurring?`,
+[`Inferior MI`,`Anteroseptal MI`,`Lateral MI`,`Posterior MI`],1,
+`Leads V1 and V2 view the septum, while V3 and V4 view the anterior wall of the left ventricle.`);
+
+add(`In the same patient with ST elevation in V1-V4 (Anteroseptal MI), which coronary artery is most likely occluded?`,
+[`Right Coronary Artery (RCA)`,`Left Circumflex Artery (LCx)`,`Left Anterior Descending (LAD) Artery`,`Posterior Descending Artery (PDA)`],2,
+`The LAD supplies the anterior two-thirds of the interventricular septum and the anterior wall of the left ventricle.`);
+
+add(`A Biophysical Profile (BPP) evaluates fetal well-being using ultrasound and a non-stress test (NST). Which of the following is NOT one of the 5 parameters scored in a BPP?`,
+[`Fetal breathing movements`,`Fetal heart rate reactivity`,`Amniotic fluid volume`,`Fetal head circumference`],3,
+`The 5 BPP parameters are: Fetal heart rate reactivity (NST), Fetal breathing movements, Fetal gross body movements, Fetal tone, and Amniotic Fluid Volume (AFV).`);
+
+add(`Which of the following clinical presentations is considered an indicator of a GOOD prognosis in a patient newly diagnosed with Schizophrenia?`,
+[`Early, insidious onset of symptoms in early adolescence`,`Prominent negative symptoms (blunted affect, avolition)`,`Acute onset with prominent positive symptoms (hallucinations, delusions) triggered by a stressor`,`A strong family history of schizophrenia`],2,
+`Good prognostic factors for schizophrenia include late/acute onset, obvious precipitating factors, presence of positive symptoms (which respond better to antipsychotics), and good pre-morbid functioning. Negative symptoms and insidious onset imply a poor prognosis.`);
+
+add(`A patient is diagnosed with a Right Ventricular Myocardial Infarction. Which standard acute coronary syndrome medication is strictly contraindicated in this patient's management?`,
+[`Intravenous Normal Saline boluses`,`Aspirin`,`Nitroglycerin`,`Supplemental Oxygen`],2,
+`A failing right ventricle is completely dependent on preload (venous return) to push blood through the lungs to the left side of the heart. Nitroglycerin is a potent venodilator that drastically drops preload, causing immediate fatal hypotension in a right-sided MI.`);
+
+add(`Conversely, a patient in acute Left-Sided Heart Failure (cardiogenic pulmonary edema) is admitted. Which initial management strategy is most appropriate?`,
+[`Aggressive IV Normal Saline boluses`,`Administration of IV Furosemide and Nitroglycerin`,`Placing the patient in the Trendelenburg position`,`Administration of Beta-blockers`],1,
+`In left-sided failure, fluid is backing up into the lungs. You must decrease preload (with diuretics and venodilators) to relieve the pulmonary congestion. Beta-blockers are contraindicated in acute decompensated failure.`);
+
+add(`A patient suffers a stroke affecting the temporal lobe of the dominant hemisphere. Which clinical manifestation is most expected?`,
+[`Expressive aphasia (Broca's)`,`Receptive aphasia (Wernicke's)`,`Severe personality changes and impulsivity`,`Hemianopsia (visual field deficits)`],1,
+`The temporal lobe houses Wernicke's area (language comprehension) and the auditory cortex. Broca's area (expressive) is in the frontal lobe. Personality changes are frontal, and vision is occipital.`);
+
+add(`Match the surgical suture material with its correct nature:
+
+1. Vicryl (Polyglactin 910)
+2. Silk
+3. Prolene (Polypropylene)
+
+a. Natural, Non-absorbable
+b. Synthetic, Absorbable
+c. Synthetic, Non-absorbable`,
+[`1-b, 2-a, 3-c`,`1-a, 2-c, 3-b`,`1-c, 2-b, 3-a`,`1-b, 2-c, 3-a`],0,
+`Vicryl is a synthetic absorbable suture. Silk is a natural (protein from silkworms) non-absorbable suture. Prolene is a synthetic non-absorbable suture.`);
+
+add(`A patient with a fractured right ankle is non-weight bearing on the right leg. The nurse teaches the patient to use crutches. When climbing UP the stairs, which sequence is correct?`,
+[`Advance the crutches first, then the right leg, then the left leg.`,`Advance the left (unaffected) leg first, followed by the crutches and the right (affected) leg.`,`Advance the right (affected) leg first, followed by the left leg and crutches.`,`Advance both crutches and the left leg simultaneously.`],1,
+`The rule for stairs is "Up with the Good, Down with the Bad." Going up, the unaffected (good) leg goes first to bear the body weight, followed by the crutches and the affected leg.`);
+
+add(`According to the Difficult Airway Society (DAS) guidelines, if tracheal intubation fails (Plan A), what is the immediate NEXT step (Plan B)?`,
+[`Proceed directly to emergency cricothyroidotomy.`,`Attempt intubation using a flexible fiberoptic bronchoscope.`,`Insert a Supraglottic Airway Device (SAD) like an LMA to maintain oxygenation.`,`Wake the patient up immediately.`],2,
+`DAS Algorithm: Plan A (Mask ventilation/Tracheal intubation) -> Plan B (Maintain oxygenation with Supraglottic Airway Device) -> Plan C (Facemask ventilation if SAD fails) -> Plan D (Front of neck access/Cricothyroidotomy if Can't Intubate, Can't Oxygenate).`);
+
+add(`Match the Type of Hypersensitivity Reaction to its classic clinical example:
+
+1. Type I
+2. Type II
+3. Type III
+4. Type IV
+
+a. ABO Blood Transfusion Reaction
+b. Mantoux Tuberculin Test
+c. Anaphylaxis to Peanuts
+d. Serum Sickness / SLE`,
+[`1-c, 2-a, 3-d, 4-b`,`1-c, 2-d, 3-a, 4-b`,`1-b, 2-a, 3-d, 4-c`,`1-a, 2-b, 3-c, 4-d`],0,
+`Type I is IgE-mediated (Anaphylaxis). Type II is Cytotoxic (Transfusion reaction). Type III is Immune Complex (Serum sickness). Type IV is Delayed cell-mediated (Mantoux test, contact dermatitis).`);
+
+add(`Match the Physical Method of Sterilization with the item it is primarily used for:
+
+1. Autoclave (Steam under pressure)
+2. Hot Air Oven (Dry heat)
+3. Gamma Radiation
+
+a. Disposable plastic syringes and IV sets
+b. Glassware, powders, and oils
+c. Stainless steel surgical instruments and linens`,
+[`1-c, 2-a, 3-b`,`1-c, 2-b, 3-a`,`1-b, 2-c, 3-a`,`1-a, 2-b, 3-c`],1,
+`Autoclave is standard for surgical instruments. Dry heat (oven) is used for powders/oils (which steam cannot penetrate) and glassware. Gamma radiation is industrial cold sterilization for single-use plastics.`);
+
+add(`Match the drug to its classic, specific side effect:
+
+1. Clofazimine
+2. Diethylcarbamazine (DEC)
+3. Chloroquine
+4. Chlorpromazine
+
+a. Bull's eye maculopathy (Retinopathy)
+b. Mazzotti reaction
+c. Red-black skin discoloration
+d. Corneal deposits and EPS`,
+[`1-c, 2-b, 3-a, 4-d`,`1-b, 2-c, 3-a, 4-d`,`1-c, 2-a, 3-b, 4-d`,`1-d, 2-b, 3-a, 4-c`],0,
+`Clofazimine (leprosy) causes skin pigmentation. DEC (filariasis) causes Mazzotti reaction (due to dying microfilariae). Chloroquine causes retinal damage. Chlorpromazine (antipsychotic) causes corneal/lens deposits and extrapyramidal symptoms.`);
+
+add(`A patient is prescribed Lithium carbonate for bipolar disorder. Which of the following is an EXPECTED, early side effect of therapeutic lithium levels, rather than a sign of toxicity?`,
+[`Coarse hand tremors`,`Fine hand tremors and polyuria`,`Ataxia and slurred speech`,`Severe diarrhea and tinnitus`],1,
+`Fine hand tremors, polyuria, and mild thirst are common, expected side effects. Coarse tremors, ataxia, diarrhea, and tinnitus indicate lethal Lithium Toxicity.`);
+
+add(`A patient is brought to the ED unresponsive. The ECG shows a markedly widened QRS complex. Physical exam reveals dilated pupils, flushed dry skin, and absent bowel sounds. The drug class is unknown. What is the priority pharmacological intervention?`,
+[`Administer IV Flumazenil`,`Administer IV Naloxone`,`Administer IV Sodium Bicarbonate`,`Administer IV Physostigmine`],2,
+`The presentation (widened QRS + severe anticholinergic toxicity: dry skin, dilated pupils, ileus) is the classic toxidrome of Tricyclic Antidepressant (TCA) overdose. The definitive antidote to overcome the sodium-channel blockade and narrow the QRS is Sodium Bicarbonate.`);
+
+/* ---- Q41-80 ---- */
+add(`A pregnant patient at 28 weeks gestation is in preterm labor. The provider orders an IV infusion of Magnesium Sulfate. Beyond tocolysis, what is the primary evidence-based rationale for administering Magnesium Sulfate before 32 weeks gestation?`,
+[`To accelerate fetal lung maturity`,`To prevent maternal eclamptic seizures`,`To provide fetal neuroprotection against cerebral palsy`,`To eradicate Group B Streptococcus`],2,
+`Current ACOG guidelines mandate MgSO4 for threatened preterm birth prior to 32 weeks specifically for fetal neuroprotection, which significantly reduces the incidence and severity of cerebral palsy in surviving premature infants.`);
+
+add(`According to the Vaughan Williams classification, Amiodarone acts by blocking potassium channels and prolonging the action potential duration. It belongs to which class of antiarrhythmics?`,
+[`Class I`,`Class II`,`Class III`,`Class IV`],2,
+`Class I = Sodium channel blockers. Class II = Beta-blockers. Class III = Potassium channel blockers (Amiodarone). Class IV = Calcium channel blockers.`);
+
+add(`Moebius syndrome (congenital facial paralysis and inability to move eyes laterally) has been strongly linked to the maternal use of which drug as an abortifacient during the first trimester?`,
+[`Thalidomide`,`Misoprostol`,`Phenytoin`,`Lithium`],1,
+`Misoprostol (Cytotec) used unsuccessfully to induce abortion in the first trimester is teratogenic and strongly associated with Moebius syndrome and limb defects due to vascular disruption in the fetus.`);
+
+add(`A chronic alcoholic tells the nurse, "I know drinking is ruining my liver, and I've looked up a few rehab centers, but I'm not ready to call them yet." According to the Transtheoretical Model of Change, which stage of motivation is the patient in?`,
+[`Precontemplation`,`Contemplation`,`Preparation`,`Action`],1,
+`Precontemplation = denial. Contemplation = aware of the problem, thinking about changing, but no commitment yet (not ready to call). Preparation = actively making a plan (e.g., calling the center to set a date).`);
+
+add(`Henri Fayol proposed 14 Principles of Management. Which of the following is NOT one of Fayol's principles?`,
+[`Unity of Command`,`Esprit de Corps`,`Time and Motion Studies`,`Scalar Chain`],2,
+`Time and Motion Studies belong to Frederick Taylor's Scientific Management theory, not Fayol's administrative principles.`);
+
+add(`A nursing tutor is using an epidiascope (opaque projector) to show a page from a textbook on a screen. Under which classification of Audio-Visual (AV) aids does this fall?`,
+[`Projected, 3-dimensional aid`,`Projected, 2-dimensional aid`,`Non-projected, 2-dimensional aid`,`Non-projected, 3-dimensional aid`],1,
+`An epidiascope projects images of opaque flat objects (2D) onto a screen. Therefore, it is a projected, 2-dimensional AV aid. Models and specimens are 3D.`);
+
+add(`Match the research reporting guideline with the specific type of study it is designed for:
+
+1. PRISMA
+2. CONSORT
+3. STROBE
+
+a. Randomized Controlled Trials (RCTs)
+b. Systematic Reviews and Meta-Analyses
+c. Observational Studies (Cohort, Case-Control)`,
+[`1-b, 2-a, 3-c`,`1-a, 2-b, 3-c`,`1-c, 2-a, 3-b`,`1-b, 2-c, 3-a`],0,
+`PRISMA is for Systematic Reviews. CONSORT is for RCTs. STROBE is for Observational studies. CARE is for Case reports. MOOSE is for Meta-analysis of Observational Studies.`);
+
+add(`A researcher wants to compare the median pain scores (measured on a skewed, non-normally distributed ordinal scale of 1-10) between two independent groups of patients. Which statistical test is most appropriate?`,
+[`Independent t-test`,`Paired t-test`,`Mann-Whitney U test`,`ANOVA`],2,
+`Because the data is non-normally distributed and ordinal, a non-parametric test must be used. The Mann-Whitney U test is the non-parametric equivalent of the independent t-test for comparing two independent groups.`);
+
+add(`A new rapid diagnostic test for HIV is highly sensitive but has low specificity. What does this mean in clinical practice?`,
+[`The test will have a high rate of false negatives.`,`A negative result effectively rules out the disease, but a positive result requires confirmation.`,`A positive result definitively confirms the disease.`,`The test measures the true prevalence of the disease in the population.`],1,
+`High Sensitivity means it correctly identifies almost everyone with the disease (very few false negatives); therefore, a negative result rules it OUT (SNOUT). Low specificity means it will have many false positives, so a positive result must be confirmed.`);
+
+add(`In a normally distributed dataset of adult heart rates, the mean is 80 bpm and the standard deviation (SD) is 5 bpm. 95.45% of the population will have a heart rate falling strictly between which two values?`,
+[`75 and 85`,`70 and 90`,`65 and 95`,`80 and 90`],1,
+`In a normal distribution, 95.45% of the data falls within ±2 Standard Deviations from the mean. 2 SD = 2 × 5 = 10. Therefore, the range is 80 - 10 to 80 + 10 (70 to 90 bpm).`);
+
+add(`Which referencing style is most universally adopted and required for publication in major nursing and psychology journals?`,
+[`MLA (Modern Language Association)`,`Chicago Style`,`APA (American Psychological Association)`,`Vancouver Style`],2,
+`APA format is the standard editorial style universally mandated for writing and referencing in the social sciences, including nursing.`);
+
+add(`In a case-control study investigating the link between smoking and lung cancer, the calculated Odds Ratio (OR) is 4.5. How should this be interpreted?`,
+[`Smokers are 4.5% more likely to develop lung cancer.`,`Smoking protects against lung cancer by a factor of 4.5.`,`The odds of exposure to smoking were 4.5 times higher in patients with lung cancer than in those without.`,`There is no statistically significant association.`],2,
+`An OR > 1 indicates a positive association. It means the odds of previous exposure (smoking) are 4.5 times higher in the cases (cancer) compared to the controls (no cancer).`);
+
+add(`A statistician calculates a Pearson correlation coefficient (r) of +1.0 between two variables. This indicates:`,
+[`No correlation`,`A weak positive correlation`,`A perfect positive linear relationship`,`A perfect negative linear relationship`],2,
+`Correlation coefficients range from -1.0 to +1.0. A score of +1.0 indicates a perfect positive linear correlation (as one variable increases, the other increases in exact proportion).`);
+
+add(`What is the defining difference between a Systematic Review and a Meta-Analysis?`,
+[`A systematic review only looks at observational studies, while a meta-analysis looks at RCTs.`,`A meta-analysis uses rigorous statistical methods to pool and quantify the data from multiple studies, whereas a systematic review is a qualitative synthesis.`,`A systematic review contains new primary research, while a meta-analysis does not.`,`There is no difference; the terms are strictly synonymous.`],1,
+`A systematic review collects and synthesizes literature methodically. If the authors take the numerical data from those collected studies and run statistical tests to create a new pooled effect size, it becomes a meta-analysis (quantitative).`);
+
+add(`Arrange the following research study designs in order from WEAKEST level of evidence to STRONGEST level of evidence:`,
+[`Case Report < Case-Control < Cohort < RCT < Meta-analysis`,`Case-Control < Case Report < RCT < Cohort < Meta-analysis`,`Cohort < Case-Control < Case Report < Meta-analysis < RCT`,`RCT < Cohort < Case-Control < Case Report < Meta-analysis`],0,
+`Hierarchy of evidence: Case report/series (weakest, no control group) -> Case-control (retrospective) -> Cohort (prospective) -> RCT (experimental control) -> Meta-analysis of RCTs (strongest pooled evidence).`);
+
+add(`In hypothesis testing, which scenario defines a Type II (Beta) error?`,
+[`Rejecting the null hypothesis when it is actually true.`,`Failing to reject the null hypothesis when it is actually false.`,`Concluding there is a significant difference when one does not exist.`,`Using a non-parametric test for normally distributed data.`],1,
+`A Type II error (false negative) occurs when the researcher accepts the null hypothesis, concluding there is no effect, when in reality a true difference or effect does exist. Type I is a false positive (rejecting a true null).`);
+
+add(`A researcher selects a cohort of 10,000 healthy nurses, follows them for 10 years, and then identifies the 50 nurses who developed a rare cancer. The researcher then selects 100 healthy nurses from that exact same original 10,000 cohort to serve as controls, and compares their past exposures. What specific study design is this?`,
+[`Cross-sectional study`,`Retrospective cohort study`,`Nested case-control study`,`Ecological study`],2,
+`A nested case-control study is a case-control study conducted within a defined, previously established cohort. It eliminates selection bias because both cases and controls originate from the exact same cohort population.`);
+
+add(`Match the Study Design to its primary indication (Study of Choice for...):
+
+1. Case-Control Study
+2. Cohort Study
+3. Randomized Controlled Trial (RCT)
+
+a. Evaluating the efficacy of a new drug
+b. Investigating a very rare disease
+c. Investigating a very rare exposure (e.g., chemical spill)`,
+[`1-b, 2-c, 3-a`,`1-c, 2-b, 3-a`,`1-a, 2-b, 3-c`,`1-b, 2-a, 3-c`],0,
+`Case-control starts with the disease, making it the only feasible way to study rare diseases. Cohort starts with the exposure, ideal for rare exposures. RCT is the gold standard for therapeutic efficacy.`);
+
+add(`A newly developed electronic blood pressure machine gives a reading of exactly 120/80 mmHg ten times in a row on a patient, but an invasive arterial line shows the patient's true BP is 180/100 mmHg. How would you describe the electronic machine?`,
+[`Highly valid and highly precise`,`Highly precise, but entirely invalid (inaccurate)`,`Highly valid, but imprecise`,`Neither valid nor precise`],1,
+`Precision is reproducibility (getting the exact same 120/80 every time). Validity/Accuracy is hitting the true mark. The machine is precise (consistent), but completely invalid because it fails to measure the true BP.`);
+
+add(`According to the Bradford Hill criteria for establishing a causal association in epidemiology, which specific criterion is considered absolute and mandatory?`,
+[`Biological gradient (Dose-response)`,`Strength of association`,`Temporality`,`Specificity`],2,
+`Temporality is the only non-negotiable criterion. The exposure MUST precede the outcome in time for it to be considered a cause. A disease cannot cause an exposure in the past.`);
+
+add(`A psychiatric patient enters the 3rd phase (Crisis Phase) of the Assault Cycle. They are violently throwing furniture and actively attacking staff. What is the BEST immediate action for the nursing officer?`,
+[`Step forward and attempt to verbally de-escalate the patient using a calm tone.`,`Ensure the safety of other patients, evacuate the immediate area, and implement physical restraint/chemical sedation protocols with a team.`,`Offer the patient a PRN oral anti-anxiety medication.`,`Attempt to process the patient's feelings and triggers for the anger.`],1,
+`In the Crisis Phase, the patient has completely lost cognitive control and is acting out violently. Verbal de-escalation and reasoning are completely useless and dangerous at this exact moment. The absolute priority is physical safety, containment, and chemical/physical restraint.`);
+
+add(`The PLISSIT model is utilized by nurses in which specific area of counseling?`,
+[`Grief and bereavement`,`Substance abuse and withdrawal`,`Sexual health and dysfunction`,`Domestic violence intervention`],2,
+`PLISSIT stands for Permission, Limited Information, Specific Suggestions, and Intensive Therapy. It is a structured framework used for assessing and counseling patients regarding human sexuality and sexual dysfunction.`);
+
+add(`In the SCOFF questionnaire used to screen for eating disorders, what does the "O" stand for?`,
+[`Obsession with caloric intake`,`Overeating uncontrollably`,`One stone (14 lbs) of weight loss in a 3-month period`,`Omission of meals`],2,
+`SCOFF: Sick (make yourself sick/vomit), Control (loss of control), One stone (weight loss >14 lbs in 3 months), Fat (believe you are fat), Food (food dominates life).`);
+
+add(`The phenomenon where responsible media reporting of individuals successfully coping with suicidal crises leads to a decrease in suicide rates in the community is known as:`,
+[`The Werther Effect`,`The Papageno Effect`,`The Hawthorne Effect`,`The Placebo Effect`],1,
+`The Papageno effect refers to the protective effect of media highlighting survival and coping. The Werther effect is the opposite (copycat suicides following sensationalized reporting of a suicide).`);
+
+add(`The Y-BOCS (Yale-Brown Obsessive Compulsive Scale) is the gold standard clinical tool used specifically to assess the severity of:`,
+[`Bipolar mania`,`Borderline Personality Disorder`,`Obsessive-Compulsive Disorder`,`Post-Traumatic Stress Disorder`],2,
+`Y-BOCS measures the severity and type of symptoms in OCD, specifically evaluating the time spent on obsessions/compulsions, interference, distress, and degree of control.`);
+
+add(`The Clinical Opiate Withdrawal Scale (COWS) is applied to determine the severity of opioid withdrawal. When using this scale to initiate buprenorphine induction, what is the clinical rule?`,
+[`Buprenorphine should be given when the COWS score is 0.`,`Buprenorphine must be delayed until the patient is in active withdrawal with an elevated COWS score.`,`A high COWS score contraindicates buprenorphine use.`,`The COWS scale measures intoxication, not withdrawal.`],1,
+`Buprenorphine is a partial agonist with high affinity. If given while full-agonist opioids are still on the receptors (COWS score is low/0), it will violently rip them off and precipitate severe, instant withdrawal. You must wait until the patient is in moderate withdrawal (COWS > 8-12) to give it safely.`);
+
+add(`A woman whose husband died suddenly in an accident continues to experience intense, disabling grief, inability to accept the death, and severe emotional numbness. According to the ICD-11, what is the minimum timeline required to diagnose Prolonged Grief Disorder (Chronic Grief)?`,
+[`1 month`,`3 months`,`6 months`,`12 months`],2,
+`While the DSM-5-TR uses 12 months for adults, the ICD-11 specifies that the intense, disabling grief reaction must persist for an abnormally long period, defined as at least 6 months after the death, to diagnose Prolonged Grief Disorder.`);
+
+add(`What is the primary accepted mechanism of action of Electroconvulsive Therapy (ECT) in the treatment of severe, refractory depression?`,
+[`It causes permanent anterograde amnesia, erasing traumatic memories.`,`It physically burns pain receptors in the frontal lobe.`,`It induces a grand mal seizure, causing massive neurotransmitter release followed by receptor down-regulation and neurogenesis.`,`It selectively depletes dopamine in the basal ganglia.`],2,
+`The therapeutic effect of ECT is derived strictly from the induction of a generalized seizure, which resets brain chemistry by altering neurotransmitter sensitivity (down-regulation of receptors) and stimulating Brain-Derived Neurotrophic Factor (BDNF).`);
+
+add(`A patient is started on a high-dose SSRI for severe depression. Two weeks later, the patient suddenly commits suicide. What is this specific clinical phenomenon called?`,
+[`Parasuicide`,`Paradoxical Suicide`,`Altruistic Suicide`,`Egoistic Suicide`],1,
+`Paradoxical suicide occurs early in antidepressant therapy. The medication gives the severely depressed patient the physical energy and psychomotor drive to execute a suicide plan before the cognitive/mood-lifting effects of the drug have fully taken hold.`);
+
+add(`A young male is brought to the ED by police. He is agitated, paranoid, and sweating. Assessment reveals a heart rate of 135 bpm, blood pressure 180/100, and markedly dilated pupils (mydriasis). Which substance intoxication does this classic presentation indicate?`,
+[`Heroin`,`Cannabis`,`Cocaine`,`Alcohol`],2,
+`Cocaine (and amphetamines) are potent sympathomimetics. Intoxication causes massive sympathetic overdrive: tachycardia, hypertension, diaphoresis, euphoria/paranoia, and mydriasis (dilated pupils). Heroin causes pinpoint pupils (miosis). Cannabis causes conjunctival injection (red eyes).`);
+
+add(`A chronic alcoholic patient with Wernicke-Korsakoff syndrome is conversing with the nurse. The patient describes in vivid detail going to a baseball game yesterday with his deceased father. Which classic symptom of Korsakoff psychosis is the patient displaying?`,
+[`Anterograde amnesia`,`Retrograde amnesia`,`Confabulation`,`Aphasia`],2,
+`Confabulation is the unconscious filling of memory gaps with fabricated, imaginary experiences. The patient is not intentionally lying; their brain is inventing stories to cover the severe amnesia caused by thiamine deficiency.`);
+
+add(`In nursing ethics, what is the definition of a "Dual Role" (or Dual Relationship)?`,
+[`A nurse working on two different clinical units simultaneously.`,`A situation where a nurse has both a professional therapeutic relationship and a personal/financial relationship with a patient.`,`A nurse acting as both the primary caregiver and the patient advocate.`,`A nurse holding both a managerial and clinical position.`],1,
+`A dual role/relationship is a severe ethical conflict of interest. It occurs when a professional boundary is crossed, and the nurse engages in a secondary relationship (e.g., dating a patient, entering a business deal with a patient), which compromises clinical objectivity.`);
+
+add(`According to Gerald Caplan's 4 Stages of Crisis, what happens in Stage 2?`,
+[`The individual confronts the hazard and uses customary problem-solving.`,`Customary coping mechanisms fail, causing a rise in anxiety and trial-and-error attempts to solve the problem.`,`All coping fails, leading to severe panic and personality disorganization.`,`The crisis is resolved through adaptation.`],1,
+`Caplan's Stages: 1) Threat -> uses standard coping. 2) Coping fails -> anxiety rises, trial & error used. 3) Trial & error fails -> panic/withdrawal. 4) Total disorganization/breakdown.`);
+
+add(`Match the level of Intellectual Disability (Mental Retardation) IQ score with its corresponding educational classification:
+
+1. IQ 50 - 70 (Mild)
+2. IQ 35 - 49 (Moderate)
+3. IQ 20 - 34 (Severe)
+4. IQ < 20 (Profound)
+
+a. Trainable
+b. Educable
+c. Life Support / Custodial
+d. Dependent`,
+[`1-b, 2-a, 3-d, 4-c`,`1-a, 2-b, 3-c, 4-d`,`1-b, 2-d, 3-a, 4-c`,`1-c, 2-b, 3-a, 4-d`],0,
+`Mild (50-70) = Educable (can reach 6th-grade level). Moderate (35-49) = Trainable (can learn basic ADLs and vocational skills). Severe (20-34) = Dependent (requires close supervision). Profound (<20) = Custodial/Life Support.`);
+
+add(`According to the Indian Academy of Pediatrics (IAP) classification of malnutrition, a child whose weight is 68% of the expected weight for their age belongs to which grade?`,
+[`Grade I`,`Grade II`,`Grade III`,`Grade IV`],1,
+`IAP Classification: >80% = Normal. 71-80% = Grade I (Mild). 61-70% = Grade II (Moderate). 51-60% = Grade III (Severe). <50% = Grade IV (Very Severe). 68% falls squarely into Grade II.`);
+
+add(`A pediatric assessment reveals the following anthropometric Z-scores: Weight-for-length = +1.7, Weight-for-age = -3.7, Height-for-age = -3.3. What is the definitive nutritional diagnosis?`,
+[`Severe acute malnutrition (Wasting)`,`Severe chronic malnutrition (Stunting)`,`Overweight`,`Normal growth`],1,
+`Height-for-age is severely low (<-3 SD), indicating severe chronic malnutrition (stunting). Because the weight-for-length is perfectly normal (+1.7), the child is not currently acutely starved/wasted. They are proportionally small due to chronic, long-term deprivation.`);
+
+add(`A 12-year-old child's BMI is plotted on the CDC growth chart and falls at the 6th percentile. How is this classified?`,
+[`Underweight`,`Healthy weight`,`Overweight`,`Obese`],1,
+`BMI percentiles for age 2-19: <5th percentile = Underweight. 5th to 84th percentile = Healthy weight. 85th to 94th percentile = Overweight. ≥95th percentile = Obese. The 6th percentile is just within the Healthy weight range.`);
+
+add(`In a specific geographical region, the local health authority has achieved zero indigenous malaria cases for 2 consecutive years and is focusing entirely on detecting imported cases to prevent re-establishment. According to WHO, which stage of malaria elimination is this?`,
+[`Control Phase`,`Pre-elimination Phase`,`Elimination Phase`,`Prevention of Reintroduction Phase`],3,
+`Once zero indigenous cases are maintained (Elimination achieved), the region enters the "Prevention of Reintroduction" phase to maintain the malaria-free status against imported cases.`);
+
+add(`Which of the following diseases is NOT transmitted by the Aedes aegypti mosquito?`,
+[`Dengue fever`,`Chikungunya`,`Zika virus`,`Japanese Encephalitis`],3,
+`Japanese Encephalitis is transmitted by the Culex mosquito (Culex tritaeniorhynchus). Aedes aegypti transmits Dengue, Chikungunya, Yellow Fever, and Zika.`);
+
+add(`Under the National AIDS Control Organisation (NACO), the term "Surakshit" specifically refers to the initiative concerning:`,
+[`Safe sex practices and condom promotion`,`Prevention of Parent to Child Transmission (PPTCT)`,`Blood safety and promoting voluntary blood donation`,`Safe disposal of biomedical waste`],2,
+`NACO's "Surakshit Rakt" (Safe Blood) campaign focuses strictly on ensuring 100% safe blood transfusion services and promoting voluntary, non-remunerated blood donation.`);
+
+/* ---- Q81-120 ---- */
+add(`The Government of India launched the "SAANS" campaign. What does the acronym SAANS stand for?`,
+[`Social Awareness and Action to Neutralise Syphilis`,`State Action and Awareness for Neonatal Survival`,`Social Awareness and Action to Neutralise Pneumonia Successfully`,`Safe Assessment and Action for Neonatal Sepsis`],2,
+`SAANS aims to reduce child mortality due to pneumonia, which contributes significantly to under-five mortality in India.`);
+
+add(`The Government of India launched the National Tele Mental Health Programme called "Tele-MANAS". What does MANAS stand for?`,
+[`Mental Health Assistance and Networking Across States`,`Medical Assistance for Neurological and Acute Syndromes`,`Mental Assessment and Nursing Action Strategy`,`Mental Health Awareness and National Action Strategy`],0,
+`Tele-MANAS (Tele Mental Health Assistance and Networking Across States) provides free, 24/7 tele-mental health services across India.`);
+
+add(`In the traditional TORCH complex of congenital infections, the "O" stands for "Others". Which of the following infections has been newly heavily integrated into the "Others" category due to its severe teratogenic effects?`,
+[`Zika virus`,`Orthomyxovirus`,`Rotavirus`,`Rhinovirus`],0,
+`The "O" (Others) includes Syphilis, Parvovirus B19, Varicella-Zoster, and now Zika virus, which causes catastrophic congenital microcephaly.`);
+
+add(`According to WHO guidelines, which specific clinical finding is considered a mandatory criterion for the safe discharge of a patient recovering from Dengue Hemorrhagic Fever (DHF)?`,
+[`Normalization of hematocrit levels`,`Return of appetite`,`Platelet count > 150,000/mm3`,`Absence of joint pain`],1,
+`While platelets and hematocrit must trend toward normal, the WHO specifically lists the clinical "Return of appetite" as a primary, required milestone for discharge in DHF, indicating recovery from the critical plasma-leakage phase.`);
+
+add(`A patient being treated for primary syphilis receives an IM injection of Benzathine Penicillin G. Six hours later, the patient develops a fever, chills, muscle aches, and an exacerbation of the syphilitic rash. What is the BEST next step by the nursing officer?`,
+[`Administer epinephrine IM for anaphylaxis.`,`Stop all future penicillin and document a severe allergy.`,`Reassure the patient that this is an expected reaction and administer antipyretics.`,`Prepare for emergency intubation.`],2,
+`This is a classic Jarisch-Herxheimer reaction, caused by the massive release of endotoxins from dying spirochetes (Treponema pallidum). It is completely normal, self-limiting (resolves in 24 hrs), and is NOT an allergic reaction. Reassurance is key.`);
+
+add(`What is the most common cause of acute viral gastroenteritis (diarrhea) in a 19-year-old college student living in a dormitory?`,
+[`Rotavirus`,`Norovirus`,`Adenovirus`,`Astrovirus`],1,
+`Rotavirus is the most common cause in infants and children under 5. Norovirus is highly contagious and the leading cause of viral diarrhea in older children, adults, and outbreaks in crowded areas (dorms, cruise ships).`);
+
+add(`Oral Rehydration Solution (ORS) relies on a specific physiological mechanism to facilitate the rapid absorption of water in the intestines. Which transport protein is responsible for this?`,
+[`SGLT-1 (Sodium-Glucose Linked Transporter 1)`,`GLUT-4`,`Na+/K+ ATPase pump`,`Aquaporin-2`],0,
+`ORS works because the intestinal SGLT-1 co-transporter requires one molecule of glucose to actively pull one ion of sodium into the cell. Water then passively follows the sodium via osmosis. This is why ORS must contain both glucose and sodium.`);
+
+add(`Match the communicable disease with its classic period of maximum infectivity:
+
+1. Chickenpox
+2. Measles
+3. Rubella
+
+a. 7 days before to 7 days after the appearance of rash
+b. 4 days before to 5 days after the appearance of rash
+c. 1 to 2 days before rash until all lesions are crusted over`,
+[`1-c, 2-b, 3-a`,`1-b, 2-c, 3-a`,`1-a, 2-b, 3-c`,`1-c, 2-a, 3-b`],0,
+`Chickenpox: 1-2 days before rash until all lesions crust. Measles: 4 days before to 4-5 days after rash. Rubella: 7 days before to 7 days after rash.`);
+
+add(`Following the detection of a single confirmed case of Ebola in a remote village, health authorities aggressively vaccinate all immediate contacts, family members, and healthcare workers surrounding the patient. What is this epidemiological strategy called?`,
+[`Herd vaccination`,`Ring vaccination`,`Pulse vaccination`,`Mass immunization`],1,
+`Ring vaccination targets only the contacts (and contacts of contacts) forming a "ring" around an infected individual to halt transmission, famously used to eradicate smallpox and control Ebola.`);
+
+add(`Which of the following is a classic example of a recombinant (genetically engineered) subunit vaccine?`,
+[`Oral Polio Vaccine (OPV)`,`Measles Vaccine`,`Hepatitis B Vaccine`,`Tetanus Toxoid`],2,
+`The Hepatitis B vaccine is created by inserting the DNA for the HBV surface antigen (HBsAg) into yeast cells, which then produce the antigen. It is a recombinant vaccine. OPV/Measles are live-attenuated. TT is a toxoid.`);
+
+add(`A pregnant woman (G1P0) receives her very first dose of Tetanus Toxoid (Td1) during her first antenatal visit. How much protective immunity does this single dose confer to the newborn against neonatal tetanus?`,
+[`0%`,`50%`,`80%`,`100%`],0,
+`Td1 acts only as a priming dose for the mother's immune system and confers 0% protection to the baby. Protection (80%) is only achieved after the mother receives the second dose (Td2) at least 4 weeks later.`);
+
+add(`A nursing officer accidentally administers the DPT vaccine via the subcutaneous (SC) route instead of the mandated deep intramuscular (IM) route in an infant. What is the BEST next step?`,
+[`Immediately administer a replacement dose via the correct IM route.`,`Reassure the parents, do not repeat the dose, but monitor the site for severe local reaction or sterile abscess.`,`Administer systemic antibiotics to prevent necrosis.`,`Draw blood to check for systemic anaphylaxis.`],1,
+`DPT contains aluminum adjuvants. If given SC, it will likely cause a painful nodule or sterile abscess due to poor tissue absorption. However, the dose is still immunologically valid and MUST NOT be repeated. Just monitor and reassure.`);
+
+add(`A pediatric patient presents with a congenital heart defect characterized by equal oxygen saturation in all four chambers of the heart. Which condition is the most likely diagnosis?`,
+[`Tetralogy of Fallot`,`Transposition of the Great Arteries`,`Total Anomalous Pulmonary Venous Connection (TAPVC)`,`Ventricular Septal Defect`],2,
+`In TAPVC, all oxygenated pulmonary venous blood completely misses the left atrium and dumps into the right atrium, mixing entirely with deoxygenated systemic blood. This mixed blood then shunts to the left side via an ASD, resulting in identical oxygen saturation in all chambers.`);
+
+add(`A 6-year-old girl is brought to the clinic. Her mother states that the child is toilet trained and voids normally, but constantly dribbles urine into her underwear all day. What anatomical defect does this classic scenario suggest?`,
+[`Vesicoureteral reflux`,`Ectopic ureter`,`Posterior urethral valves`,`Hypospadias`],1,
+`An ectopic ureter in a female often bypasses the bladder sphincter and inserts directly into the vagina or urethra. This results in the classic symptom: normal, controlled voiding (from the normal kidney/ureter) accompanied by constant, uncontrollable continuous dribbling (from the ectopic ureter).`);
+
+add(`According to the WHO classification of vision impairment, a patient with a visual acuity of 4/60 in the better eye belongs to which category?`,
+[`Mild vision impairment`,`Moderate vision impairment`,`Severe vision impairment`,`Blindness`],2,
+`WHO Categories: Moderate = <6/18 to 6/60. Severe = <6/60 to 3/60. Blindness = <3/60. A visual acuity of 4/60 falls into Severe vision impairment.`);
+
+add(`Using the Lund and Browder burn chart for a 1-year-old infant, what percentage of Total Body Surface Area (TBSA) is assigned to ONE entire leg?`,
+[`9%`,`13.5%`,`18%`,`21%`],1,
+`In the Rule of Nines for an adult, one leg is 18%. In an infant, the head is much larger and the legs are shorter. Using Lund and Browder, one leg on a 1-year-old accounts for exactly 13.5% (or 14% on some simplified charts).`);
+
+add(`When assessing a newborn for Developmental Dysplasia of the Hip (DDH), what definitively describes a positive Ortolani maneuver?`,
+[`Applying posterior pressure to dislocate the femoral head out of the acetabulum.`,`Abducting the hip while applying anterior pressure to reduce a dislocated femoral head back into the acetabulum, producing a "clunk".`,`Observing asymmetrical gluteal folds.`,`Measuring unequal leg lengths (Galeazzi sign).`],1,
+`The Barlow maneuver dislocates the hip (Bad). The Ortolani maneuver reduces the hip back into place (Out goes In), verifying the instability via a palpable clunk.`);
+
+add(`A 7-year-old presents with a sore throat. Using the Centor Criteria to differentiate between viral and bacterial (Group A Strep) pharyngitis, which finding points strongly toward a BACTERIAL cause?`,
+[`Presence of a harsh cough`,`Conjunctivitis`,`Absence of a cough`,`Rhinorrhea (runny nose)`],2,
+`The Centor criteria for bacterial strep throat include: Fever, tonsillar exudates, tender anterior cervical adenopathy, and the absence of a cough. Cough, conjunctivitis, and runny nose point heavily to a viral etiology.`);
+
+add(`A 3-year-old child presents with a barking cough and inspiratory stridor. The physician orders a cool mist humidity tent. The parents ask if hot steam would be better. What is the most accurate nursing response?`,
+[`"Hot steam is more effective at reducing subglottic swelling."`,`"Cool mist is preferred because hot steam carries a high risk of accidental scalding."`,`"Both are equally effective, but cool mist is cheaper."`,`"Hot steam promotes bacterial growth in the airway."`],1,
+`For Croup (laryngotracheobronchitis), cool mist humidity is historically preferred to soothe the inflamed airway. Hot steam is no longer recommended primarily due to the significant risk of accidental burns and scalding in young, restless children, with no proven superior efficacy over cool mist.`);
+
+add(`A 4-year-old child presents with a 5-day history of high fever (103°F), bilateral conjunctivitis without exudate, a "strawberry tongue", cracked lips, and a peeling rash on the hands and feet. What is the definitive diagnosis?`,
+[`Scarlet Fever`,`Kawasaki Disease`,`Measles`,`Rubella`],1,
+`While Scarlet Fever causes a strawberry tongue and rash, it does NOT cause non-exudative conjunctivitis or peeling of the hands/feet. This specific presentation is the absolute hallmark of Kawasaki Disease (mucocutaneous lymph node syndrome).`);
+
+add(`A newborn presents with a cluster of congenital anomalies including vertebral defects, anal atresia, a ventricular septal defect, esophageal atresia, and a single umbilical artery. This constellation of findings is known as the VACTERL association. What does the "V" specifically stand for?`,
+[`Vascular anomalies`,`Ventricular septal defects`,`Vertebral anomalies`,`Vaginal atresia`],2,
+`VACTERL stands for Vertebral anomalies, Anal atresia, Cardiac defects, Tracheoesophageal fistula, Esophageal atresia, Renal anomalies, and Limb abnormalities.`);
+
+add(`A panicked mother brings her 3-day-old neonate to the clinic, pointing out a bright red hemorrhage covering the sclera of the baby's left eye. The nurse notes no other trauma. What is the most appropriate action?`,
+[`Prepare for emergency CT scan of the head for abusive head trauma.`,`Reassure the mother that this is a self-limiting subconjunctival hemorrhage from birth trauma and requires no treatment.`,`Administer prophylactic topical antibiotic drops.`,`Test the infant for a bleeding diathesis (Vitamin K deficiency).`],1,
+`Subconjunctival hemorrhage is a completely benign, normal occurrence resulting from the massive pressure changes in the head during a vaginal delivery. It is self-limiting and resolves on its own in 1-2 weeks.`);
+
+add(`In obstetric pelvic assessment, a "contracted pelvis" at the inlet is defined when the true obstetric conjugate is less than 10 cm, or when the clinically measured diagonal conjugate is strictly less than:`,
+[`10.0 cm`,`10.5 cm`,`11.5 cm`,`12.5 cm`],2,
+`The diagonal conjugate is the only diameter of the pelvic inlet that can be measured clinically. A normal diagonal conjugate is > 11.5 cm. If it is < 11.5 cm, the pelvis is contracted at the inlet.`);
+
+add(`The Mississippi Classification System is specifically utilized to classify the severity of which obstetric complication based on platelet count?`,
+[`Placenta Accreta Spectrum`,`HELLP Syndrome`,`Postpartum Hemorrhage`,`Uterine Rupture`],1,
+`The Mississippi classification stages HELLP (Hemolysis, Elevated Liver enzymes, Low Platelets) syndrome into Class I (severe, platelets <50k), Class II (moderate, 50k-100k), and Class III (mild, 100k-150k).`);
+
+add(`A pregnant woman with Type 1 Diabetes asks how her insulin requirements will change throughout her pregnancy. What is the correct nursing response?`,
+[`"Your needs will increase in the 1st trimester, and decrease in the 2nd and 3rd."`,`"Your needs will decrease in the 1st trimester, and steadily increase in the 2nd and 3rd."`,`"Your needs will stay the same until delivery."`,`"You will not need insulin; we will switch you to oral medications."`],1,
+`1st trimester = increased insulin sensitivity and nausea cause a DECREASE in insulin needs (risk of hypoglycemia). 2nd and 3rd trimesters = placental hormones (HPL) cause massive insulin resistance, forcing a steady INCREASE in insulin requirements.`);
+
+add(`Arrange the "4 T's" of Postpartum Hemorrhage in order of INCREASING incidence (from least common to most common):`,
+[`Tone, Tissue, Trauma, Thrombin`,`Thrombin, Tissue, Trauma, Tone`,`Trauma, Thrombin, Tone, Tissue`,`Tissue, Trauma, Thrombin, Tone`],1,
+`Incidence rates: Thrombin (coagulopathy) = ~1%. Tissue (retained placenta) = ~10%. Trauma (lacerations) = ~20%. Tone (Uterine atony) = ~70%.`);
+
+add(`A patient with a history of one prior low-transverse Cesarean section desires a Trial of Labor After Cesarean (TOLAC). Which method of labor induction is strictly contraindicated due to a high risk of uterine rupture?`,
+[`Spontaneous labor`,`Amniotomy (AROM)`,`Prostaglandins (e.g., Misoprostol)`,`Foley bulb cervical ripening`],2,
+`The use of prostaglandins (Misoprostol/Cytotec) for cervical ripening or induction in a patient with a prior uterine scar drastically increases the risk of uterine rupture and is strictly contraindicated.`);
+
+add(`A nurse is calculating a Bishop score. The cervix is 2 cm dilated (1 pt), 50% effaced (1 pt), station is -2 (1 pt), consistency is soft (2 pts), and position is anterior (2 pts). What is the total score and what does it indicate?`,
+[`Score 7; Favorable for induction`,`Score 7; Unfavorable for induction`,`Score 5; Favorable for induction`,`Score 10; Unfavorable for induction`],0,
+`Total = 1+1+1+2+2 = 7. A Bishop score of 6 or higher indicates a "ripe" or favorable cervix, predicting that an induction of labor is likely to be successful.`);
+
+add(`Which uterotonic drug is contraindicated in the management of postpartum hemorrhage in a patient with severe Pregnancy-Induced Hypertension (PIH)?`,
+[`Oxytocin`,`Methylergonovine (Ergometrine)`,`Carboprost (Hemabate)`,`Misoprostol`],1,
+`Ergometrine is a powerful vasoconstrictor. If given to a patient with already severe hypertension (PIH/Preeclampsia), it will cause a catastrophic hypertensive crisis and stroke.`);
+
+add(`A normally progressing labor is plotted on a WHO Partograph. The cervical dilatation curve (from 4 cm to 10 cm) will strictly mirror which shape?`,
+[`Linear line`,`J-shaped curve`,`Sigmoid curve`,`Parabolic curve`],2,
+`In a normal labor, cervical dilation follows a sigmoid (S-shaped) curve. It starts slowly in the latent phase, accelerates rapidly in the active phase, and slightly decelerates just before reaching 10 cm.`);
+
+add(`Which gene mutation is the most significant main driver/risk factor for the development of Male Breast Cancer?`,
+[`BRCA1`,`BRCA2`,`HER2`,`TP53`],1,
+`While both BRCA1 and BRCA2 are implicated in female breast cancer, mutations in the BRCA2 gene carry a disproportionately high risk for male breast cancer compared to BRCA1.`);
+
+add(`The presence of anemia is nearly universal in end-stage Chronic Kidney Disease (CKD). Morphologically, what type of anemia is this?`,
+[`Microcytic, hypochromic`,`Macrocytic, normochromic`,`Normocytic, normochromic`,`Microcytic, hyperchromic`],2,
+`Anemia in CKD is primarily caused by a lack of Erythropoietin (EPO) production by the dying kidneys. The bone marrow stops making RBCs, but the RBCs that are made are perfectly normal in size (normocytic) and color (normochromic).`);
+
+add(`According to current surgical guidelines for tension-free Hernioplasty, what is the ideal characteristic of the synthetic mesh used to reduce chronic pain and foreign body reaction?`,
+[`Heavy weight, small pore`,`Light weight, small pore`,`Light weight, large pore`,`Heavy weight, large pore`],2,
+`Light-weight, large-pore (macroporous) meshes are preferred. They reduce the amount of foreign material left in the body (reducing chronic inflammatory pain) while large pores allow macrophages to enter and clear bacteria, reducing infection risk.`);
+
+add(`A patient with liver cirrhosis presents with a sudden onset of painful hepatomegaly, massive ascites, and abdominal pain. Ultrasound confirms hepatic vein thrombosis. What is the specific diagnosis?`,
+[`Portal hypertension`,`Budd-Chiari syndrome`,`Hepatocellular carcinoma`,`Hepatorenal syndrome`],1,
+`Budd-Chiari syndrome is an acute vascular condition defined strictly by the occlusion or thrombosis of the hepatic veins. It causes the classic triad of abdominal pain, ascites, and hepatomegaly due to blood backing up into the liver.`);
+
+add(`A nurse asks a patient to lift their arm against gravity. The patient is able to lift the arm, but the moment the nurse applies slight resistance, the arm falls. According to the MRC Muscle Strength Grading Scale, what grade is this?`,
+[`Grade 2`,`Grade 3`,`Grade 4`,`Grade 5`],1,
+`Grade 0 = no movement. Grade 1 = flicker. Grade 2 = movement with gravity eliminated. Grade 3 = movement against gravity, but NOT against resistance. Grade 4 = movement against some resistance. Grade 5 = normal strength.`);
+
+add(`A patient is admitted with an acute stroke. They display left-sided hemiplegia, spatial-perceptual deficits, severe impulsivity, and denial of their deficits (anosognosia). Which hemisphere of the brain was infarcted?`,
+[`Left Brain`,`Right Brain`,`Cerebellum`,`Brainstem`],1,
+`Right-brain stroke manifests with left-sided weakness, impulsivity, poor judgment, spatial neglect, and lack of awareness of deficits. Left-brain stroke typically manifests with right-sided weakness, aphasia (language deficits), and cautious, slow behavior.`);
+
+add(`Prior to drawing an Arterial Blood Gas (ABG) from the radial artery, the nurse performs a Modified Allen's Test. The nurse compresses both the ulnar and radial arteries, the patient pumps their fist, and the hand blanches. What is the correct next step in the sequence?`,
+[`Release the radial artery only and observe for color return.`,`Release the ulnar artery only and observe for color return.`,`Release both arteries simultaneously.`,`Keep both compressed and draw the blood.`],1,
+`The purpose of the test is to ensure the ulnar artery can provide collateral circulation to the hand if the radial artery is damaged by the needle. Therefore, you release the ulnar artery and verify that the hand turns pink within 5-10 seconds.`);
+
+add(`A nurse is assessing a patient's risk for pressure ulcers using the Braden Scale. The patient is completely immobile (1), rarely moist (4), has very poor nutrition (1), walks occasionally (3), has no sensory impairment (4), and has a problem with friction/shear (1). What is the total score and risk level?`,
+[`14; Moderate Risk`,`9; Severe Risk`,`14; Mild Risk`,`18; No Risk`],0,
+`Total = 1+4+1+3+4+1 = 14. Braden Scale Risk: ≤9 = Severe Risk. 10-12 = High Risk. 13-14 = Moderate Risk. 15-18 = Mild Risk.`);
+
+add(`A nurse accesses the electronic medical record of a high-profile celebrity patient whom she is not assigned to care for, and then tells her friends about the diagnosis. In nursing jurisprudence, this is an example of:`,
+[`Malpractice`,`Battery`,`A quasi-intentional tort (Breach of confidentiality / Invasion of privacy)`,`An unintentional tort`],2,
+`Quasi-intentional torts involve acts where intent is lacking to cause specific harm, but direct action was taken that violated a person's rights, reputation, or privacy (e.g., breach of confidentiality, defamation).`);
+
+add(`When measuring Jugular Venous Pressure (JVP) using the sternal angle of Louis as a reference point, how many centimeters must the nurse ADD to the measured vertical height to estimate the true right atrial pressure (Central Venous Pressure)?`,
+[`2 cm`,`5 cm`,`10 cm`,`15 cm`],1,
+`The sternal angle is anatomically located exactly 5 cm above the right atrium, regardless of the patient's position (sitting or supine). Therefore, JVP (cm H2O) = Vertical height measured + 5 cm.`);
+
+/* ---- Q121-160 ---- */
+add(`NADAS CRITERIA
+
+A 6-year-old child has a grade 3/6 systolic murmur at the left lower sternal border, a diastolic component, abnormal S2, and a history of recurrent chest infections. Which finding most strongly supports that the murmur is pathological according to Nadas criteria?`,
+[`Grade 2/6 systolic murmur without radiation`,`Murmur becoming softer when the child stands`,`Diastolic murmur with abnormal second heart sound`,`Physiological splitting of S2 during inspiration`],2,
+`Nadas criteria use features such as diastolic murmurs, loud systolic murmurs, abnormal S2, abnormal precordial findings and associated symptoms to distinguish pathological from innocent murmurs. A diastolic murmur is particularly suggestive of structural heart disease.`);
+
+add(`Under the GOBI-FFF strategy promoted by UNICEF to reduce child mortality, what does the "F" in FFF NOT stand for?`,
+[`Female literacy`,`Financial independence`,`Food supplementation`,`Family spacing`],1,
+`GOBI-FFF stands for: Growth monitoring, Oral rehydration therapy, Breastfeeding, Immunization, Family spacing, Female literacy, and Food supplementation. Financial independence is not part of the acronym.`);
+
+add(`The Indian government introduced "ABSULS" to strengthen community surveillance. What is the full form of this acronym?`,
+[`Anganwadi Based Strategy for Leprosy Screening`,`Acute Bacterial Sepsis Under Local Surveillance`,`ASHA Based Surveillance for Leprosy Suspects`,`Auxiliary Based Surveillance for Lymphatic Syphilis`],2,
+`ABSULS is a unique approach under the National Leprosy Eradication Programme where Accredited Social Health Activists (ASHAs) conduct active, door-to-door community surveillance to ensure early detection of hidden leprosy cases.`);
+
+add(`What is the primary physiological stimulus for the functional closure of the ductus arteriosus immediately after birth?`,
+[`Decreased levels of circulating maternal prostaglandins`,`Increased pulmonary vascular resistance`,`Increased arterial oxygen tension (PaO₂)`,`Decreased systemic vascular resistance`],2,
+`With the first breath, blood flows to the lungs, dramatically increasing systemic arterial oxygen tension (PaO₂). This sudden surge in oxygen is the most potent, primary stimulus causing the smooth muscle of the ductus arteriosus to functionally constrict.`);
+
+add(`Cleft lip results strictly from the embryonic failure of which structures to fuse?`,
+[`Maxillary and mandibular prominences`,`Maxillary prominences and the medial nasal prominence`,`Lateral nasal prominences and the medial nasal prominence`,`Palatine shelves`],1,
+`A cleft lip occurs when the maxillary prominences fail to fuse with the medial nasal prominence during the 6th to 7th week of embryonic development. Failure of the palatine shelves to fuse results in a cleft palate.`);
+
+add(`During a Denver II developmental screening, at what age should a neurotypically developing child typically be able to copy a square?`,
+[`2 years`,`3 years`,`4 years`,`5 years`],2,
+`Developmental milestones for drawing geometric shapes: A child can copy a circle at 3 years, a cross and a square at 4 years, and a triangle at 5 years.`);
+
+add(`A neonate's head circumference (HC) at birth is 33 cm. Assuming normal, healthy growth, what is the expected head circumference at 6 months of age?`,
+[`39 cm`,`41 cm`,`43 cm`,`45 cm`],2,
+`Head circumference grows ~2 cm/month for the first 3 months (33 + 6 = 39 cm), and then ~1 cm/month for the next 3 months (39 + 3 = 42-43 cm). By 6 months, it should be approximately 43 cm.`);
+
+add(`Which type of viral hepatitis carries the highest risk of fulminant hepatic failure and mortality when contracted during the third trimester of pregnancy?`,
+[`Hepatitis A`,`Hepatitis B`,`Hepatitis C`,`Hepatitis E`],3,
+`While typically a self-limiting disease in the general population, Hepatitis E carries a disproportionately high mortality rate (up to 20-25%) when contracted by pregnant women in their third trimester.`);
+
+add(`A woman presents to the clinic with amenorrhea and a positive urine hCG test. According to the diagnostic signs of pregnancy, how is a positive hCG test classified?`,
+[`Presumptive sign`,`Probable sign`,`Positive sign`,`Confirmatory sign`],1,
+`Presumptive signs are subjective (amenorrhea). Probable signs are objective changes observed by an examiner (positive hCG, Chadwick's sign), but can still be caused by tumors. Positive signs are absolute proof of a fetus (fetal heart tones, ultrasound).`);
+
+add(`In a vertex presentation where the fetal head attitude is marked deflexion (extension/face presentation), which diameter of the fetal skull presents to the maternal pelvis?`,
+[`Suboccipitobregmatic`,`Occipitofrontal`,`Occipitomental`,`Submentobregmatic`],3,
+`When the head is in marked deflexion (a face presentation), the presenting diameter is the submentobregmatic diameter, which measures approximately 9.5 cm.`);
+
+add(`'Peau d'orange' (orange peel appearance) of the breast is pathognomonic for inflammatory breast cancer. According to the TNM staging system, the presence of peau d'orange automatically categorizes the tumor as which clinical T stage?`,
+[`T1`,`T2`,`T3`,`T4`],3,
+`Inflammatory breast cancer is characterized by diffuse erythema and edema (peau d'orange) involving the skin. Regardless of the underlying tumor size, this direct skin involvement automatically classifies it as a T4 (specifically T4d) lesion.`);
+
+add(`A patient receiving an IV infusion of Vincristine develops sudden pain, redness, and swelling at the insertion site. Suspecting extravasation, what is the most appropriate initial nursing intervention after stopping the infusion?`,
+[`Apply a cold compress immediately.`,`Apply a warm compress and elevate the extremity.`,`Vigorously flush the line with 0.9% Normal Saline.`,`Administer subcutaneous epinephrine around the site.`],1,
+`Vincristine is a vinca alkaloid (vesicant). Extravasation of vinca alkaloids is uniquely treated with WARM compresses (to increase local blood flow and disperse the drug) and the antidote Hyaluronidase. Cold compresses worsen tissue damage with vincristine.`);
+
+add(`In urinalysis, the presence of "coffin lid" shaped crystals is highly indicative of which specific type of urinary stone?`,
+[`Calcium oxalate`,`Uric acid`,`Struvite (Magnesium ammonium phosphate)`,`Cystine`],2,
+`Struvite crystals characteristically appear as rectangular prisms resembling "coffin lids" under a microscope. They form in alkaline urine and are strongly associated with urease-producing bacterial infections (e.g., Proteus).`);
+
+add(`A patient's Glasgow Coma Scale (GCS) assessment shows: opens eyes to pain (2), incomprehensible sounds (2), and abnormal flexion/decorticate posturing to pain (3). What is the total GCS score, and what does it indicate?`,
+[`Score 7; indicates a mild head injury`,`Score 7; indicates a severe head injury`,`Score 9; indicates a moderate head injury`,`Score 5; indicates a severe head injury`],1,
+`Total = Eye (2) + Verbal (2) + Motor (3) = 7. A GCS score of 8 or less is classified as severe head injury/coma and typically warrants intubation to protect the airway. 9-12 is moderate, and 13-15 is mild.`);
+
+add(`What is the most common cause of mechanical small bowel obstruction in an adult patient with a history of a previous laparotomy?`,
+[`Inguinal hernia`,`Post-operative adhesions`,`Volvulus`,`Intussusception`],1,
+`In adults with a history of prior abdominal or pelvic surgery (laparotomy), intraperitoneal adhesions are by far the leading cause of mechanical small bowel obstruction, accounting for over 60% of cases.`);
+
+add(`The Alvarado score is a clinical scoring system specifically utilized to assist in the diagnosis of which surgical emergency?`,
+[`Acute Pancreatitis`,`Acute Cholecystitis`,`Acute Appendicitis`,`Diverticulitis`],2,
+`The Alvarado score (MANTRELS mnemonic: Migration of pain, Anorexia, Nausea, Tenderness in RLQ, Rebound pain, Elevated temp, Leukocytosis, Shift to the left) stratifies the risk of acute appendicitis.`);
+
+add(`Which serum biomarker is considered the most highly specific for diagnosing acute pancreatitis?`,
+[`Serum Amylase`,`Serum Lipase`,`C-reactive protein (CRP)`,`Serum Trypsinogen`],1,
+`Serum lipase is both more sensitive and significantly more specific for acute pancreatitis than serum amylase. Amylase can elevate in various non-pancreatic conditions (salivary gland disorders, bowel obstruction), whereas lipase remains elevated longer and is pancreas-specific.`);
+
+add(`Which of the following is a classic manifestation of Late Dumping Syndrome (occurring 1-3 hours after eating) following gastric bypass surgery?`,
+[`Explosive diarrhea`,`Reactive hypoglycemia`,`Profound tachycardia and diaphoresis immediately after swallowing`,`Severe epigastric pain`],1,
+`Early dumping syndrome (15-30 mins post-meal) is caused by rapid fluid shifts causing diarrhea and dizziness. Late dumping syndrome (1-3 hours post-meal) is caused by the rapid absorption of carbohydrates, leading to an exaggerated insulin spike and subsequent severe reactive hypoglycemia.`);
+
+add(`A nurse performs a Rinne test. The patient reports hearing the vibrating tuning fork next to their ear even after they can no longer feel it vibrating on their mastoid process. How should the nurse interpret this positive Rinne test?`,
+[`It indicates severe conductive hearing loss in that ear.`,`It indicates Air Conduction is greater than Bone Conduction (AC > BC), which is normal.`,`It indicates Bone Conduction is greater than Air Conduction (BC > AC).`,`It indicates total sensorineural deafness.`],1,
+`A "Positive" Rinne test means that Air Conduction (AC) is greater than Bone Conduction (BC), which is the normal physiological state. If BC > AC (Negative Rinne), it indicates conductive hearing loss.`);
+
+add(`For a patient who has sustained severe, high-voltage electrical burns from a high-tension wire, what is the minimum target urine output the nurse must aggressively maintain?`,
+[`0.5 mL/kg/hr`,`30 mL/hr`,`75 - 100 mL/hr`,`200 mL/hr`],2,
+`High-voltage electrical burns cause massive muscle destruction, releasing myoglobin into the blood (rhabdomyolysis), which physically obstructs renal tubules. Standard burn resuscitation aims for 30-50 mL/hr, but electrical burns mandate 75-100 mL/hr to aggressively flush the myoglobin and prevent acute tubular necrosis.`);
+
+add(`When preparing to administer moderate (conscious) sedation, a patient who has movement or eye opening to voice, but makes no eye contact, would receive what score on the Richmond Agitation-Sedation Scale (RASS)?`,
+[`-1 (Drowsy)`,`-2 (Light sedation)`,`-3 (Moderate sedation)`,`-4 (Deep sedation)`],2,
+`On the RASS scale, -1 is drowsy but sustained eye contact >10s. -2 is light sedation, eye contact <10s. -3 indicates moderate sedation: the patient moves or opens eyes to voice but makes no eye contact. -4 is deep sedation (no response to voice, only to physical stimulation).`);
+
+add(`Inhalational anesthetics are measured by Minimum Alveolar Concentration (MAC), where a lower MAC equals higher potency. Which sequence represents agents in DECREASING order of potency?`,
+[`Halothane > Isoflurane > Sevoflurane > Desflurane`,`Desflurane > Sevoflurane > Isoflurane > Halothane`,`Isoflurane > Halothane > Desflurane > Sevoflurane`,`Sevoflurane > Isoflurane > Halothane > Desflurane`],0,
+`Lower MAC = higher potency. Halothane (MAC 0.75%) is highly potent. Isoflurane (MAC 1.2%), Sevoflurane (MAC 2.0%), and Desflurane (MAC 6.0%) follow. Desflurane requires the highest concentration, making it the least potent.`);
+
+add(`In Targeted Temperature Management (TTM) for a comatose patient post-cardiac arrest, what is the standard AHA recommended target temperature range?`,
+[`30°C to 32°C`,`32°C to 36°C`,`36°C to 38°C`,`38°C to 40°C`],1,
+`Current guidelines recommend maintaining a constant target temperature strictly between 32°C and 36°C for at least 24 hours in comatose adult patients with return of spontaneous circulation (ROSC) to mitigate anoxic brain injury.`);
+
+add(`A patient requires a rapid transfusion of one unit (350 mL) of Packed RBCs in a trauma setting. A Grey (16-gauge) cannula is inserted. At maximum gravity flow, approximately how long will it take to infuse the entire unit through this cannula?`,
+[`2 minutes`,`10 minutes`,`30 minutes`,`60 minutes`],0,
+`A Grey (16G) cannula has a massive flow rate of approximately 180 to 220 mL/minute. Under maximum gravity flow, it will easily infuse a 350 mL bag of fluid or blood in under 2 minutes, making it ideal for rapid trauma resuscitation.`);
+
+add(`When drawing multiple blood samples through a peripheral venipuncture, which is the correct, standardized CLSI "Order of Draw" to prevent cross-contamination of additives?`,
+[`Blood Culture -> Serum Tubes (Red/SST) -> Sodium Citrate (Light Blue) -> EDTA (Lavender)`,`Blood Culture -> Sodium Citrate (Light Blue) -> Serum Tubes (Red/SST) -> EDTA (Lavender)`,`Sodium Citrate (Light Blue) -> Blood Culture -> EDTA (Lavender) -> Serum Tubes (Red/SST)`,`Blood Culture -> EDTA (Lavender) -> Sodium Citrate (Light Blue) -> Serum Tubes (Red/SST)`],1,
+`Order of draw prevents additive carryover (e.g., EDTA falsely elevating potassium). Strict sequence: 1) Blood Cultures (Sterile), 2) Light Blue (Citrate), 3) Red/Gold/SST (Serum), 4) Green (Heparin), 5) Lavender (EDTA), 6) Gray (Fluoride).`);
+
+add(`A nurse must process CSF collected via lumbar puncture. In what order should the CSF tubes be processed in the laboratory to minimize the effect of a traumatic tap on the RBC count?`,
+[`1: Microbiology, 2: Hematology (Cell count), 3: Chemistry, 4: Special tests`,`1: Chemistry, 2: Microbiology, 3: Hematology (Cell count), 4: Special tests`,`1: Hematology (Cell count), 2: Chemistry, 3: Microbiology, 4: Special tests`,`1: Special tests, 2: Hematology, 3: Microbiology, 4: Chemistry`],1,
+`Tube 1 (Chemistry) is often contaminated with blood from the initial needle insertion. Tube 2 (Micro) is kept sterile. Tube 3 (Hematology/Cell Count) is collected last because it is least likely to contain blood from a traumatic tap, providing the most accurate true RBC/WBC count.`);
+
+add(`What is the most frequently injured abdominal organ following blunt abdominal trauma (e.g., a steering wheel impact)?`,
+[`Liver`,`Spleen`,`Kidneys`,`Small Intestine`],1,
+`Due to its anatomical position and highly vascular, friable nature, the spleen is the absolute most commonly injured solid organ in blunt abdominal trauma.`);
+
+add(`According to IMNCI guidelines, how should a child presenting with ear discharge that has been present for 15 days be classified and treated?`,
+[`Acute Ear Infection; Treat with oral Amoxicillin for 5 days.`,`Chronic Ear Infection; Treat with oral Amoxicillin for 14 days.`,`Chronic Ear Infection; Instruct mother to wick dry the ear and apply topical quinolone drops.`,`Mastoiditis; Give first dose IM Ceftriaxone and refer urgently.`],2,
+`Under IMNCI, ear discharge ≥14 days is a "Chronic Ear Infection" (Yellow). Systemic (oral) antibiotics cannot reach the scarred, avascular site. The mandated treatment is strictly topical: dry wicking and topical quinolone drops for 14 days. NO oral antibiotics are given.`);
+
+add(`Which of the following foods contains the highest amount of dietary potassium per standard serving?`,
+[`White Potato`,`Spinach`,`Acorn Squash`,`Banana`],0,
+`While bananas are famously associated with potassium, a medium baked white potato with skin contains significantly more potassium (over 900 mg) compared to a medium banana (approx. 420 mg), spinach, or squash.`);
+
+add(`A newborn at 1 minute has a heart rate of 90 bpm, slow and irregular respirations, some flexion of the extremities, a grimace in response to suction, and a body that is pink with blue extremities (acrocyanosis). What is the correct 1-minute APGAR score?`,
+[`4`,`5`,`7`,`8`],1,
+`Scoring: Heart rate <100 bpm = 1 point, slow/irregular respiratory effort = 1 point, some flexion of extremities (muscle tone) = 1 point, grimace only in response to stimulation (reflex irritability) = 1 point, and acrocyanosis (body pink, extremities blue) = 1 point. Total = 1+1+1+1+1 = 5, indicating the newborn requires some resuscitative assistance (scores of 7-10 are reassuring, 4-6 indicate moderate difficulty, 0-3 indicate severe distress).`);
+
+add(`A pregnant patient at 34 weeks gestation presents with sudden, painless, bright red vaginal bleeding. The uterus is soft and non-tender, and the fetal heart rate is reassuring. Which condition does this presentation most strongly suggest?`,
+[`Placental abruption`,`Placenta previa`,`Uterine rupture`,`Vasa previa`],1,
+`Placenta previa classically presents with painless, bright red bleeding and a soft, non-tender uterus because the placenta is implanted over or near the cervical os and bleeds as the lower segment stretches. Placental abruption, in contrast, presents with painful bleeding, a tender/rigid uterus, and often fetal distress due to separation of the placenta from the uterine wall.`);
+
+add(`A newborn delivered after a difficult shoulder dystocia presents with the affected arm hanging limply at the side, internally rotated, with the elbow extended and the wrist flexed (the classic "waiter's tip" position). Which condition does this describe?`,
+[`Klumpke's palsy`,`Erb-Duchenne palsy`,`Facial nerve palsy`,`Congenital hip dislocation`],1,
+`Erb-Duchenne palsy results from traction injury to the upper brachial plexus (C5-C6), typically from shoulder dystocia during delivery. It produces the classic "waiter's tip" posture: adduction and internal rotation of the arm, elbow extension, and wrist flexion. Klumpke's palsy involves the lower brachial plexus (C8-T1) and instead causes a clawed hand.`);
+
+add(`A 4-year-old presents with sudden onset high fever, drooling, a muffled "hot potato" voice, and insists on sitting upright leaning forward (tripod position). The nurse suspects epiglottitis. What is the most important immediate nursing action?`,
+[`Attempt to visualize the throat with a tongue depressor to confirm the diagnosis.`,`Place the child supine to reduce respiratory effort.`,`Avoid all throat examination and prepare for emergency airway management.`,`Administer nebulized racemic epinephrine and reassess in 30 minutes.`],2,
+`Epiglottitis is a life-threatening emergency in which the swollen epiglottis can completely obstruct the airway. Any throat examination, tongue depressor use, or agitation of the child can trigger sudden, complete airway obstruction. The child should be kept calm, upright, and preparations made for emergency intubation or tracheostomy in a controlled setting.`);
+
+add(`A 4-week-old infant presents with projectile, non-bilious vomiting after every feeding, is persistently hungry afterward, and has a palpable olive-shaped mass in the right upper quadrant. Arterial blood gas reveals which classic acid-base disturbance?`,
+[`Metabolic acidosis with hyperkalemia`,`Hypochloremic, hypokalemic metabolic alkalosis`,`Respiratory acidosis`,`Metabolic acidosis with hyponatremia`],1,
+`In pyloric stenosis, repeated vomiting of stomach contents (rich in hydrochloric acid and potassium) leads to loss of chloride, hydrogen, and potassium ions, producing the classic hypochloremic, hypokalemic metabolic alkalosis.`);
+
+add(`Which of the following is NOT a minor criterion for Acute Rheumatic Fever, but rather an absolute prerequisite evidence of preceding infection?`,
+[`Arthralgia`,`Fever`,`Prolonged PR interval`,`Elevated Antistreptolysin O (ASO) titer`],3,
+`Arthralgia, Fever, Elevated CRP/ESR, and Prolonged PR interval are the Minor Jones Criteria. An elevated ASO titer is NOT a minor criterion; it is a mandatory, absolute prerequisite required to even apply the Jones criteria (proving a recent Group A Strep infection occurred).`);
+
+add(`A 6-year-old presents with a bright red rash on both cheeks giving a "slapped cheek" appearance, followed a few days later by a lacy, reticular rash on the trunk and extremities. The child has been afebrile and otherwise well for several days. Which pathogen is responsible?`,
+[`Rubella virus`,`Parvovirus B19`,`Human herpesvirus 6`,`Coxsackievirus A16`],1,
+`Parvovirus B19 causes erythema infectiosum ("fifth disease"), characterized by the classic slapped-cheek facial rash followed by a lacy, reticular body rash. By the time the rash appears, the child is typically no longer contagious. This infection is of particular concern if a pregnant contact is exposed, due to risk of fetal hydrops.`);
+
+add(`A 2-year-old presents with painless, dark maroon rectal bleeding. A Meckel's scan confirms the diagnosis of Meckel's diverticulum. According to the classic "Rule of 2's," which statement about this condition is correct?`,
+[`It occurs in about 2% of the population and is typically located within 2 feet of the ileocecal valve.`,`It occurs in about 20% of the population and is located in the jejunum.`,`It is twice as common in females and presents by age 2 months.`,`It contains ectopic pancreatic tissue in 2% of cases only.`],0,
+`The Rule of 2's for Meckel's diverticulum: occurs in about 2% of the population, is located approximately 2 feet from the ileocecal valve, is about 2 inches long, is twice as common in males, most often becomes symptomatic before age 2, and may contain 2 types of ectopic tissue (gastric or pancreatic).`);
+
+add(`A newborn has a swelling on the scalp that crosses suture lines, is soft and pitting, and was present immediately at birth. It resolves within 48 hours. Which condition does this describe?`,
+[`Cephalohematoma`,`Caput succedaneum`,`Subgaleal hemorrhage`,`Craniosynostosis`],1,
+`Caput succedaneum is diffuse edema of the scalp caused by pressure during delivery; it crosses suture lines and resolves within a few days. Cephalohematoma, in contrast, is a subperiosteal bleed that does NOT cross suture lines, appears hours after birth, and can take weeks to resolve.`);
+
+add(`A patient receiving an IV magnesium sulfate infusion for severe preeclampsia is found to have absent deep tendon reflexes and a respiratory rate of 10 breaths/min. What is the priority nursing action?`,
+[`Increase the magnesium sulfate infusion rate.`,`Stop the infusion and prepare to administer IV calcium gluconate.`,`Administer naloxone immediately.`,`Reposition the patient and recheck reflexes in one hour.`],1,
+`Absent deep tendon reflexes and respiratory depression are signs of magnesium toxicity. The infusion must be stopped immediately, and the specific antidote, IV calcium gluconate, should be prepared and administered to reverse the neuromuscular and respiratory depressant effects of magnesium.`);
+
+add(`A patient with Type 1 Diabetes on evening NPH insulin reports consistently high fasting blood glucose readings. Overnight glucose monitoring reveals a period of hypoglycemia around 2-3 AM, followed by rebound hyperglycemia by 7 AM. Which phenomenon does this describe, and what is the appropriate nursing action?`,
+[`Dawn phenomenon; increase the evening insulin dose.`,`Somogyi effect; decrease the evening insulin dose or provide a bedtime snack.`,`Dawn phenomenon; administer insulin earlier in the evening.`,`Somogyi effect; increase the evening insulin dose.`],1,
+`The Somogyi effect is rebound hyperglycemia that occurs after an episode of undetected nocturnal hypoglycemia, as the body releases counter-regulatory hormones. The correct management is to decrease the evening insulin dose or add a bedtime snack, NOT increase the insulin, which would worsen the hypoglycemia and rebound effect. The Dawn phenomenon, by contrast, is an early-morning rise in glucose without preceding hypoglycemia, caused by natural nocturnal growth hormone/cortisol release.`);
+
+
+
+/* ======================= CONSTANTS ======================= */
+const TOTAL_Q = QUESTIONS.length;
+const MOCK_SECONDS = 180*60;
+const WA_LINK = "https://chat.whatsapp.com/GCymmczgn6W1FBPhxc3cux?s=cl&p=a&mlu=4&ilr=4";
+const LETTERS = ['A','B','C','D'];
+
+const LS_MOCK = 'nln_mock_v1';
+const LS_PRACTICE = 'nln_practice_v1';
+const LS_HISTORY = 'nln_history_v1';
+const LS_THEME = 'nln_theme_v1';
+
+/* ======================= STORAGE HELPERS ======================= */
+function lsGet(key){
+  try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }catch(e){ return null; }
+}
+function lsSet(key,val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); return true; }catch(e){ return false; }
+}
+function lsRemove(key){
+  try{ localStorage.removeItem(key); }catch(e){}
+}
+
+/* ======================= UTIL ======================= */
+function escapeHtml(str){
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+function fmtQText(str){ return escapeHtml(str); } // white-space:pre-line handles newlines
+function fmtTime(sec){
+  sec = Math.max(0, Math.round(sec));
+  const h = Math.floor(sec/3600);
+  const m = Math.floor((sec%3600)/60);
+  const s = sec%60;
+  const pad = n => String(n).padStart(2,'0');
+  return h>0 ? (pad(h)+':'+pad(m)+':'+pad(s)) : (pad(m)+':'+pad(s));
+}
+function round2(n){ return Math.round(n*100)/100; }
+function qs(sel){ return document.querySelector(sel); }
+
+/* ======================= STATE ======================= */
+let S = {
+  view:'home',
+  mode:null,
+  current:0,
+  answers:{},
+  marked:{},
+  visited:{},
+  remaining:MOCK_SECONDS,
+  timerId:null,
+  filter:'all',
+  openRev:{},
+  results:null
+};
+
+function freshState(mode){
+  return { answers:{}, marked:{}, visited:{0:true}, current:0, remaining: mode==='mock'?MOCK_SECONDS:0, startedAt: Date.now() };
+}
+function stateKey(mode){ return mode==='mock' ? LS_MOCK : LS_PRACTICE; }
+
+function persist(){
+  if(!S.mode) return;
+  lsSet(stateKey(S.mode), {
+    answers:S.answers, marked:S.marked, visited:S.visited, current:S.current, remaining:S.remaining, startedAt:S.startedAt
+  });
+}
+
+function hasSaved(mode){
+  const d = lsGet(stateKey(mode));
+  return d && d.answers && Object.keys(d.answers).length + (d.current>0?1:0) >= 0 && (Object.keys(d.answers).length>0 || d.current>0 || Object.keys(d.visited||{}).length>1);
+}
+
+function pushHistory(entry){
+  const h = lsGet(LS_HISTORY) || [];
+  h.unshift(entry);
+  lsSet(LS_HISTORY, h.slice(0,8));
+}
+
+/* ======================= THEME ======================= */
+function initTheme(){
+  const t = lsGet(LS_THEME);
+  if(t==='dark' || t==='light'){ document.documentElement.setAttribute('data-theme', t); }
+}
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur==='dark' ? 'light' : (cur==='light' ? 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light':'dark'));
+  document.documentElement.setAttribute('data-theme', next);
+  lsSet(LS_THEME, next);
+}
+
+/* ======================= NAV / MODE START ======================= */
+function goHome(confirmLeave){
+  if(confirmLeave && S.view==='quiz' && !S.results){
+    showModal(`
+      <h3>Leave this attempt?</h3>
+      <p>Your progress is saved automatically — you can resume it later from the home screen.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="App.hideModal()">Stay</button>
+        <button class="btn btn-primary" onclick="App.hideModal(); App.forceHome();">Go Home</button>
+      </div>
+    `);
+    return;
+  }
+  forceHome();
+}
+function forceHome(){
+  if(S.timerId){ clearInterval(S.timerId); S.timerId=null; }
+  S.view='home'; S.results=null;
+  render();
+}
+
+function startMode(mode, resume){
+  S.mode = mode;
+  if(resume){
+    const saved = lsGet(stateKey(mode));
+    if(saved){
+      S.answers = saved.answers||{}; S.marked = saved.marked||{}; S.visited = saved.visited||{};
+      S.current = saved.current||0; S.remaining = (mode==='mock') ? (saved.remaining!=null?saved.remaining:MOCK_SECONDS) : 0;
+      S.startedAt = saved.startedAt || Date.now();
+    } else {
+      const f = freshState(mode); Object.assign(S,f);
+    }
+  } else {
+    const f = freshState(mode); Object.assign(S,f);
+    persist();
+  }
+  S.view='quiz'; S.results=null; S.openRev={}; S.filter='all';
+  if(mode==='mock'){
+    if(S.timerId) clearInterval(S.timerId);
+    S.timerId = setInterval(tick, 1000);
+  }
+  render();
+}
+
+function tick(){
+  S.remaining -= 1;
+  if(S.remaining <= 0){
+    S.remaining = 0;
+    clearInterval(S.timerId); S.timerId=null;
+    persist();
+    doSubmit(true);
+    return;
+  }
+  persist();
+  const t = qs('#timerDisplay');
+  if(t){ t.textContent = fmtTime(S.remaining); t.classList.toggle('low', S.remaining<=300); }
+}
+
+/* ======================= ANSWERING ======================= */
+function selectOption(qi, oi){
+  const q = QUESTIONS[qi];
+  if(S.mode==='practice' && S.answers[qi]!==undefined) return; // locked after first attempt
+  S.answers[qi] = oi;
+  S.visited[qi] = true;
+  persist();
+  render();
+}
+function clearResponse(){
+  delete S.answers[S.current];
+  persist();
+  render();
+}
+function toggleMark(){
+  if(S.marked[S.current]) delete S.marked[S.current]; else S.marked[S.current]=true;
+  persist();
+  render();
+}
+function goTo(i){
+  if(i<0||i>=TOTAL_Q) return;
+  S.current = i; S.visited[i]=true;
+  persist();
+  closeOverlay();
+  render();
+}
+function goPrev(){ goTo(S.current-1); }
+function goNext(){ goTo(S.current+1); }
+function saveAndNext(){
+  if(S.current < TOTAL_Q-1) goNext(); else render();
+}
+
+/* ======================= PALETTE OVERLAY ======================= */
+function openOverlay(){ qs('#overlayBg').classList.remove('hidden'); renderPaletteGrid(); }
+function closeOverlay(){ const o=qs('#overlayBg'); if(o) o.classList.add('hidden'); }
+
+function paletteStatus(i){
+  const answered = S.answers[i]!==undefined;
+  const marked = !!S.marked[i];
+  if(S.mode==='practice' && answered){
+    return QUESTIONS[i].c===S.answers[i] ? 'pcorrect' : 'pwrong';
+  }
+  if(answered && marked) return 'markedans';
+  if(marked) return 'marked';
+  if(answered) return 'answered';
+  if(S.visited[i]) return 'notanswered';
+  return 'notvisited';
+}
+function renderPaletteGrid(){
+  const el = qs('#paletteGrid');
+  if(!el) return;
+  let html='';
+  for(let i=0;i<TOTAL_Q;i++){
+    const st = paletteStatus(i);
+    const cur = i===S.current ? ' current' : '';
+    html += `<button class="pnum ${st}${cur}" onclick="App.goTo(${i})">${i+1}</button>`;
+  }
+  el.innerHTML = html;
+}
+function updatePaletteFab(){
+  const fab = qs('#paletteFab');
+  if(!fab) return;
+  fab.innerHTML = `<span class="n">${S.current+1}</span><span>/ ${TOTAL_Q}</span>`;
+}
+
+/* ======================= MODAL ======================= */
+function showModal(html){
+  qs('#modalBody').innerHTML = html;
+  qs('#modalBg').classList.remove('hidden');
+}
+function hideModal(){ qs('#modalBg').classList.add('hidden'); }
+
+/* ======================= SUBMIT / SCORING ======================= */
+function computeScore(){
+  let correct=0, wrong=0, unattempted=0, marked=0;
+  for(let i=0;i<TOTAL_Q;i++){
+    if(S.marked[i]) marked++;
+    const a = S.answers[i];
+    if(a===undefined){ unattempted++; }
+    else if(a===QUESTIONS[i].c){ correct++; }
+    else { wrong++; }
+  }
+  const score = round2(correct*1 - wrong*(1/3));
+  return {correct,wrong,unattempted,marked,score};
+}
+function confirmSubmit(){
+  const r = computeScore();
+  showModal(`
+    <h3>Submit ${S.mode==='mock'?'Mock Test':'Practice Session'}?</h3>
+    <p>Please review your summary before submitting.</p>
+    <div class="sumgrid">
+      <div><b>${r.correct}</b>Answered</div>
+      <div><b>${TOTAL_Q - r.correct - r.wrong}</b>Not Answered</div>
+      <div><b>${r.marked}</b>Marked</div>
+      <div><b>${TOTAL_Q}</b>Total Qs</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="App.hideModal()">Continue Test</button>
+      <button class="btn btn-primary" onclick="App.hideModal(); App.doSubmit(false);">Submit Now</button>
+    </div>
+  `);
+}
+function doSubmit(auto){
+  if(S.timerId){ clearInterval(S.timerId); S.timerId=null; }
+  const r = computeScore();
+  const timeTakenSec = S.mode==='mock' ? (MOCK_SECONDS - S.remaining) : (Math.round((Date.now()-(S.startedAt||Date.now()))/1000));
+  S.results = Object.assign({}, r, {timeTakenSec, auto:!!auto});
+  pushHistory({
+    mode:S.mode, date:new Date().toISOString(), score:r.score, correct:r.correct, wrong:r.wrong,
+    unattempted:r.unattempted, timeTakenSec
+  });
+  lsRemove(stateKey(S.mode));
+  S.view='results'; S.filter='all'; S.openRev={};
+  render();
+}
+
+/* ======================= RENDER: HOME ======================= */
+function renderHome(){
+  const mockSaved = lsGet(LS_MOCK);
+  const practiceSaved = lsGet(LS_PRACTICE);
+  const mockResumable = mockSaved && (Object.keys(mockSaved.answers||{}).length>0 || (mockSaved.current||0)>0);
+  const practiceResumable = practiceSaved && (Object.keys(practiceSaved.answers||{}).length>0 || (practiceSaved.current||0)>0);
+  const hist = lsGet(LS_HISTORY) || [];
+
+  let histHtml='';
+  if(hist.length){
+    histHtml = `<div class="historybox"><h4>Your Recent Attempts</h4>` +
+      hist.slice(0,5).map(h=>{
+        const d = new Date(h.date);
+        const dstr = d.toLocaleDateString(undefined,{day:'2-digit',month:'short'}) + ' ' + d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+        const label = h.mode==='mock' ? 'Mock Test' : 'Practice';
+        return `<div class="histrow"><span>${label} · ${dstr}</span><span class="sc">${h.score} / ${TOTAL_Q}</span></div>`;
+      }).join('') + `</div>`;
+  }
+
+  qs('#app').innerHTML = `
+    <div class="hero">
+      <h1>NORCET 11 Mains — Free Mock Test</h1>
+      <p>${TOTAL_Q} high-yield MCQs curated by experts. Practice with instant feedback, or simulate the real exam under timed conditions.</p>
+      <div class="badgeline">
+        <span class="badge">🏆 All India Single Digit Ranks</span>
+        <span class="badge">🆓 100% Free</span>
+      </div>
+    </div>
+
+    <div class="statrow">
+      <div class="stat"><b>${TOTAL_Q}</b><span>Questions</span></div>
+      <div class="stat"><b>180</b><span>Minutes</span></div>
+      <div class="stat"><b>+1 / -⅓</b><span>Marking</span></div>
+    </div>
+
+    <div class="modecards">
+      <div class="modecard">
+        <h3>🕒 Mock Test</h3>
+        <p>Full exam simulation — 180-minute timer, +1 for correct, -⅓ for wrong. No feedback until you submit; detailed analysis at the end.</p>
+        <ul><li>Question palette &amp; mark for review</li><li>Auto-submits when time runs out</li><li>Full answer key + rationale on submission</li></ul>
+        <button class="btn btn-primary btn-block" onclick="App.startMode('mock', false)">Start Mock Test</button>
+        ${mockResumable ? `<div class="resume-row"><button class="btn btn-gold" onclick="App.startMode('mock', true)">▶ Resume</button><button class="btn btn-ghost" onclick="App.confirmFreshStart('mock')">Start Fresh</button></div>` : ``}
+      </div>
+      <div class="modecard">
+        <h3>📘 Practice Mode</h3>
+        <p>Untimed, question-by-question learning. See the correct answer and full rationale the moment you attempt each question.</p>
+        <ul><li>Instant green/red feedback</li><li>Rationale shown after every attempt</li><li>Learn at your own pace</li></ul>
+        <button class="btn btn-outline btn-block" onclick="App.startMode('practice', false)">Start Practice Mode</button>
+        ${practiceResumable ? `<div class="resume-row"><button class="btn btn-gold" onclick="App.startMode('practice', true)">▶ Resume</button><button class="btn btn-ghost" onclick="App.confirmFreshStart('practice')">Start Fresh</button></div>` : ``}
+      </div>
+    </div>
+
+    ${histHtml}
+
+    <div class="footnote">
+      Made with care by <b>NLN — Next Level Nursing</b>. Questions are for practice purposes — always cross-verify high-yield facts with your standard textbooks.
+    </div>
+  `;
+}
+function confirmFreshStart(mode){
+  showModal(`
+    <h3>Start Fresh?</h3>
+    <p>This will discard your saved ${mode==='mock'?'mock test':'practice'} progress and begin again from Question 1.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="App.hideModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="App.hideModal(); lsRemove(stateKey('${mode}')); App.startMode('${mode}', false);">Start Fresh</button>
+    </div>
+  `);
+}
+
+/* ======================= RENDER: QUIZ ======================= */
+function renderQuiz(){
+  const i = S.current;
+  const q = QUESTIONS[i];
+  const answered = S.answers[i];
+  const isPractice = S.mode==='practice';
+  const locked = isPractice && answered!==undefined;
+
+  let optsHtml = '';
+  q.o.forEach((optText,oi)=>{
+    let cls = 'opt';
+    let mark = '';
+    if(isPractice && locked){
+      if(oi===q.c){ cls+=' correct'; mark = ' <span class="mark">✓</span>'; }
+      else if(oi===answered){ cls+=' incorrect'; mark = ' <span class="mark">✕</span>'; }
+    } else if(answered===oi){
+      cls+=' selected';
+    }
+    const disabledAttr = locked ? ' disabled' : '';
+    optsHtml += `<button class="${cls}" ${disabledAttr} onclick="App.selectOption(${i},${oi})"><span class="lbl">${LETTERS[oi]}</span><span>${fmtQText(optText)}</span>${mark}</button>`;
+  });
+
+  let rationaleHtml = '';
+  if(isPractice && locked){
+    const isCorrect = answered===q.c;
+    rationaleHtml = `
+      <div class="rationale ${isCorrect?'correctbox':'wrongbox'}">
+        <span class="verdict">${isCorrect ? '✅ Correct!' : '❌ Incorrect'}</span>
+        ${!isCorrect ? `<span class="ans">Correct answer: ${LETTERS[q.c]}. ${fmtQText(q.o[q.c])}</span>` : ``}
+        <div>${fmtQText(q.r).replace(/\n/g,'<br>')}</div>
+      </div>`;
+  }
+
+  const topLeft = isPractice
+    ? `<div class="qb-left"><b>Practice Mode</b> · Q ${i+1}/${TOTAL_Q}</div>`
+    : `<div class="qb-left"><b>Mock Test</b> · Q ${i+1}/${TOTAL_Q}</div>`;
+
+  const timerHtml = S.mode==='mock' ? `<span class="timer${S.remaining<=300?' low':''}" id="timerDisplay">${fmtTime(S.remaining)}</span>` : '';
+  const submitBtn = S.mode==='mock' ? `<button class="btn btn-danger" onclick="App.confirmSubmit()" style="padding:8px 12px;font-size:12.5px;">Submit</button>` : `<button class="btn btn-outline" onclick="App.confirmSubmit()" style="padding:8px 12px;font-size:12.5px;">Finish</button>`;
+
+  const pct = Math.round(((i+1)/TOTAL_Q)*100);
+
+  qs('#app').innerHTML = `
+    <div class="quizbar">
+      <div class="quizbar-in">
+        ${topLeft}
+        <div style="display:flex;gap:8px;align-items:center;">
+          ${timerHtml}
+          ${submitBtn}
+        </div>
+      </div>
+      <div class="progressbar"><div class="progressbar-in" style="width:${pct}%"></div></div>
+    </div>
+
+    <div class="qcard">
+      <div class="qcard-top">
+        <span class="qnum">QUESTION ${i+1}</span>
+        <button class="flagbtn ${S.marked[i]?'on':''}" onclick="App.toggleMark()">🚩 ${S.marked[i]?'Marked':'Mark for review'}</button>
+      </div>
+      <div class="qtext">${fmtQText(q.q)}</div>
+      <div class="options">${optsHtml}</div>
+      ${rationaleHtml}
+    </div>
+
+    <div class="quiznav">
+      <button class="btn btn-ghost" onclick="App.goPrev()" ${i===0?'disabled':''}>◀ Previous</button>
+      ${S.mode==='mock' ? `<button class="btn btn-ghost" onclick="App.clearResponse()">Clear</button>` : ``}
+      <button class="btn btn-primary" onclick="App.saveAndNext()" ${i===TOTAL_Q-1?'disabled':''}>Next ▶</button>
+    </div>
+
+    <button class="palette-fab" id="paletteFab" onclick="App.openOverlay()"></button>
+
+    <div class="overlay hidden" id="overlayBg">
+      <div class="sheet">
+        <div class="sheet-head"><h4>Question Palette</h4><button class="sheet-close" onclick="App.closeOverlay()">✕</button></div>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--surface-2);border:1.5px solid var(--border)"></i>Not visited</span>
+          <span><i class="dot" style="background:var(--danger-bg);border:1.5px solid var(--danger)"></i>Not answered</span>
+          <span><i class="dot" style="background:var(--success)"></i>Answered</span>
+          <span><i class="dot" style="background:var(--marked)"></i>Marked</span>
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+        <div class="wa-line">📲 <a href="${WA_LINK}" target="_blank" rel="noopener">Join NLN WhatsApp for more free tests</a></div>
+      </div>
+    </div>
+  `;
+  updatePaletteFab();
+  qs('#overlayBg').addEventListener('click', function(e){ if(e.target.id==='overlayBg') closeOverlay(); });
+}
+
+/* ======================= RENDER: RESULTS ======================= */
+function setFilter(f){ S.filter=f; render(); }
+function toggleRev(i){ S.openRev[i] = !S.openRev[i]; render(); }
+
+function renderResults(){
+  const r = S.results;
+  const pct = TOTAL_Q>0 ? Math.round((r.correct/TOTAL_Q)*100) : 0;
+
+  const filters = [
+    {k:'all', label:'All'},
+    {k:'wrong', label:'Incorrect'},
+    {k:'correct', label:'Correct'},
+    {k:'skip', label:'Unattempted'},
+    {k:'marked', label:'Marked'}
+  ];
+  const filterHtml = filters.map(f=>`<button class="chip ${S.filter===f.k?'active':''}" onclick="App.setFilter('${f.k}')">${f.label}</button>`).join('');
+
+  let cardsHtml = '';
+  for(let i=0;i<TOTAL_Q;i++){
+    const q = QUESTIONS[i];
+    const a = S.answers[i];
+    const status = a===undefined ? 'skip' : (a===q.c ? 'correct' : 'wrong');
+    if(S.filter==='marked' && !S.marked[i]) continue;
+    if(S.filter!=='all' && S.filter!=='marked' && S.filter!==status) continue;
+
+    const icon = status==='correct' ? '✅' : (status==='wrong' ? '❌' : '➖');
+    const open = S.openRev[i] ? ' open' : '';
+    let body = '';
+    if(a!==undefined){
+      body += `<div class="revans your ${status==='correct'?'correct':'wrong'}"><b>Your answer:</b> ${LETTERS[a]}. ${fmtQText(q.o[a])}</div>`;
+    } else {
+      body += `<div class="revans your"><b>Your answer:</b> Not attempted</div>`;
+    }
+    if(status!=='correct'){
+      body += `<div class="revans correctline"><b>Correct answer:</b> ${LETTERS[q.c]}. ${fmtQText(q.o[q.c])}</div>`;
+    }
+    body += `<div style="margin-top:8px;line-height:1.55;">${fmtQText(q.r).replace(/\n/g,'<br>')}</div>`;
+
+    cardsHtml += `
+      <div class="revcard ${status}">
+        <div class="revhead" onclick="App.toggleRev(${i})">
+          <div>
+            <div class="qn">Q${i+1}${S.marked[i]?' · 🚩 Marked':''}</div>
+            <div class="qt">${fmtQText(q.q)}</div>
+          </div>
+          <div class="revicon">${icon}</div>
+        </div>
+        <div class="revbody${open}">${body}</div>
+      </div>
+    `;
+  }
+  if(!cardsHtml){ cardsHtml = `<p style="text-align:center;color:var(--text-muted);padding:20px 0;">No questions in this filter.</p>`; }
+
+  qs('#app').innerHTML = `
+    <div class="resultwrap">
+      <div class="scorering" style="--pct:${pct}">
+        <div class="scorering-in">
+          <b>${r.score}</b>
+          <span>/ ${TOTAL_Q} marks</span>
+        </div>
+      </div>
+      <div class="scoreline">${r.correct} Correct · ${r.wrong} Incorrect · ${r.unattempted} Unattempted</div>
+      <div class="scoresub">${S.mode==='mock' ? (r.auto?'Auto-submitted when time expired':'Submitted successfully') : 'Practice session complete'} ${S.mode==='mock' ? '· Time taken: '+fmtTime(r.timeTakenSec) : ''}</div>
+
+      <div class="statgrid">
+        <div class="g correct"><b>${r.correct}</b><span>CORRECT</span></div>
+        <div class="g wrong"><b>${r.wrong}</b><span>WRONG</span></div>
+        <div class="g skip"><b>${r.unattempted}</b><span>SKIPPED</span></div>
+        <div class="g time"><b>${pct}%</b><span>ACCURACY</span></div>
+      </div>
+
+      <div class="filters">${filterHtml}</div>
+      <div id="revlist">${cardsHtml}</div>
+
+      <div class="resultactions">
+        <button class="btn btn-primary btn-block" onclick="App.retake('${S.mode}')">🔁 Retake ${S.mode==='mock'?'Mock Test':'Practice'}</button>
+        ${S.mode==='mock' ? `<button class="btn btn-outline btn-block" onclick="App.startMode('practice', false)">📘 Try Practice Mode Instead</button>` : ``}
+        <button class="btn btn-ghost btn-block" onclick="App.forceHome()">🏠 Back to Home</button>
+      </div>
+    </div>
+  `;
+}
+function retake(mode){
+  lsRemove(stateKey(mode));
+  startMode(mode, false);
+}
+
+/* ======================= MAIN RENDER DISPATCH ======================= */
+function render(){
+  if(S.view==='home') renderHome();
+  else if(S.view==='quiz') renderQuiz();
+  else if(S.view==='results') renderResults();
+}
+
+/* ======================= INIT ======================= */
+initTheme();
+render();
+
+/* ======================= EXPORTS ======================= */
+window.App = {
+  toggleTheme, startMode, selectOption, clearResponse, toggleMark, goTo, goPrev, goNext, saveAndNext,
+  openOverlay, closeOverlay, confirmSubmit, doSubmit, hideModal, setFilter, toggleRev, retake,
+  forceHome, confirmFreshStart, goHome
+};
+window.stateKey = stateKey;
+window.lsRemove = lsRemove;
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "prepnurse",
+  "version": "1.0.0",
+  "description": "PrepNurse — NORCET Mock Test Platform",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/src/server.js",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "test:backend": "cd backend && npm test",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "author": "PrepNurse",
+  "license": "ISC"
+}

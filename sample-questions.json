@@ -1,0 +1,107 @@
+[
+  {
+    "id": "q_001",
+    "questionId": "norcet-m1-q001",
+    "question": "Which of the following is NOT a major criterion according to the Jones Criteria for diagnosing Acute Rheumatic Fever?",
+    "options": [
+      "Migratory polyarthritis",
+      "Erythema marginatum",
+      "Sydenham chorea",
+      "Polyarthralgia"
+    ],
+    "correctAnswer": 3,
+    "explanation": "The major Jones Criteria include Carditis, Polyarthritis, Chorea, Erythema marginatum, and Subcutaneous nodules (mnemonic: J♥NES). Polyarthralgia (joint pain without objective swelling) is strictly a minor criterion, whereas Polyarthritis is a major criterion.",
+    "subject": "Nursing Foundations",
+    "topic": "Clinical Procedures & Critical Care",
+    "difficulty": "Hard",
+    "tags": [
+      "NORCET",
+      "Mains",
+      "Clinical Procedures & Critical Care"
+    ]
+  },
+  {
+    "id": "q_002",
+    "questionId": "norcet-m1-q002",
+    "question": "A nursing instructor is designing a test to evaluate a student's ability to combine multiple clinical facts to form a new care plan. According to Bloom's Taxonomy, which cognitive level is being tested?",
+    "options": [
+      "Applying",
+      "Analyzing",
+      "Evaluating",
+      "Creating (Synthesis)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Creating or Synthesis is the highest level of the cognitive domain in Bloom's Taxonomy, involving combining parts to form a new, original whole (e.g., formulating a unique care plan).",
+    "subject": "Nursing Research, Management & Education",
+    "topic": "Professional Trends",
+    "difficulty": "Easy",
+    "tags": [
+      "NORCET",
+      "Mains",
+      "Professional Trends"
+    ]
+  },
+  {
+    "id": "q_003",
+    "questionId": "norcet-m1-q003",
+    "question": "Under current pediatric airway guidelines, what is the primary rationale for preferentially utilizing a cuffed endotracheal tube (ETT) over an un-cuffed ETT in an infant?",
+    "options": [
+      "It utilizes the naturally narrow cricoid cartilage to form a seal.",
+      "It requires a larger internal diameter tube, decreasing airway resistance.",
+      "It allows for reliable delivery of Positive End-Expiratory Pressure (PEEP) and decreases the need for tube exchanges.",
+      "It prevents vocal cord paralysis during prolonged intubation."
+    ],
+    "correctAnswer": 2,
+    "explanation": "Historically, un-cuffed tubes were used because the pediatric cricoid acts as a natural seal. Modern guidelines prefer cuffed tubes for all ages to prevent air leaks, ensure accurate tidal volume/PEEP delivery, and reduce the trauma of repeated tube exchanges.",
+    "subject": "Child Health Nursing (Pediatrics)",
+    "topic": "Pediatric Nursing",
+    "difficulty": "Medium",
+    "tags": [
+      "NORCET",
+      "Mains",
+      "Pediatric Nursing"
+    ]
+  },
+  {
+    "id": "q_004",
+    "questionId": "norcet-m1-q004",
+    "question": "A psychiatric nurse removes a patient's privileges to watch television because the patient threw a chair at another resident. This behavioral modification technique is strictly defined as:",
+    "options": [
+      "Positive Reinforcement",
+      "Negative Reinforcement",
+      "Positive Punishment",
+      "Negative Punishment"
+    ],
+    "correctAnswer": 3,
+    "explanation": "\"Negative\" means taking something away, and \"Punishment\" means aiming to decrease a behavior. Removing a pleasant stimulus (TV) to decrease an unwanted behavior (throwing chairs) is Negative Punishment.",
+    "subject": "Mental Health Nursing (Psychiatry)",
+    "topic": "Psychiatric Nursing",
+    "difficulty": "Hard",
+    "tags": [
+      "NORCET",
+      "Mains",
+      "Psychiatric Nursing"
+    ]
+  },
+  {
+    "id": "q_005",
+    "questionId": "norcet-m1-q005",
+    "question": "In a randomized controlled trial comparing two antihypertensives, the p-value for the difference in blood pressure reduction is 0.03. How must the nurse interpret this finding?",
+    "options": [
+      "The probability of making a Type II error is 3%.",
+      "There is a 3% probability that the observed difference occurred by chance if the null hypothesis is true.",
+      "The alternative hypothesis is 97% proven to be true.",
+      "The clinical significance of the drug is high."
+    ],
+    "correctAnswer": 1,
+    "explanation": "A p-value of <0.05 indicates statistical significance, meaning that if there were truly no difference between the drugs (null hypothesis), there is only a 3% probability of seeing this data by pure chance.",
+    "subject": "Pharmacology in Nursing",
+    "topic": "Clinical Pharmacology",
+    "difficulty": "Medium",
+    "tags": [
+      "NORCET",
+      "Mains",
+      "Clinical Pharmacology"
+    ]
+  }
+]
