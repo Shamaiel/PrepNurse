@@ -1,7 +1,7 @@
 {
-  "name": "norcet-backend",
+  "name": "prepnurse-backend",
   "version": "1.0.0",
-  "description": "Backend API for NORCET Mock Test Platform",
+  "description": "Backend API for PrepNurse — NORCET Mock Test Platform",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
